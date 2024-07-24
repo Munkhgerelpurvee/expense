@@ -1,33 +1,44 @@
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-  } from "@/components/ui/avatar";
+import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { Button } from "@/components/ui/button";
+
+export default function Navbar() {
+  return (
+    <div>
+      <main className="flex justify-between p-4 border shadow-lg">
 
 
-  import { Button } from "@/components/ui/button";
+        <div className="flex items-center gap-4">
 
+       
+       
+          <Image
+            src="/images/Vector.svg"
+            alt="Vecvor Logo"
+            className="dark:invert"
+            width={27}
+            height={27}
+          />
+    
 
-export default function Navbar () {
-    return (
-        <div>
+          <p className=" text-[#0F172A] text-base font-normal " >Dashboard</p>
+          <p className=" text-[#0F172A] text-base font-semibold " >Records</p>
+          
 
-<main className="flex flex-col items-center justify-between min-h-screen p-4">
-
-<div className="flex gap-4">
-
-<Button className="bg-[#0166FF] font-normal text-base">+ Record</Button>
-      <Avatar>
-  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-  <AvatarFallback>CN</AvatarFallback>
-</Avatar>
-</div>
-
-
-  </main>
-
-
+        
         </div>
 
-    )
+        <div className="flex gap-4 ">
+          <Button className="bg-[#0166FF] font-normal text-base">
+            + Record
+          </Button>
+          <Avatar>
+            <AvatarImage src="/images/Placeholder.svg" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </div>
+      </main>
+    </div>
+  );
 }
