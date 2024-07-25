@@ -3,8 +3,6 @@ import Categories  from "../../components/Categories";
 import Food  from "../../components/Food";
 import Image from "next/image";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -18,10 +16,24 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
+
 
 import { Input } from "@/components/ui/input";
+import * as React from "react"
+import Link from "next/link"
 
+import { cn } from "@/lib/utils"
+// import { Icons } from "@/components/icons"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 
 
 
@@ -43,34 +55,105 @@ export default function Record() {
           <p className="text-2xl font-semibold 
           text-[#000]">Records</p>
           
-          <Dialog className="border shadow-lg">
+  <Dialog className="border shadow-lg">
       <DialogTrigger asChild>
         <Button variant="outline" className="bg-[#0166FF] text-[#fff] font-extralight text-base px-28 rounded-full"> + Add</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Add Record</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DialogDescription>
+      <DialogContent className="sm:max-w-[825px]">
+        <DialogHeader  className="shadow-md">
+          <DialogTitle >Add Record</DialogTitle>
+          
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid items-center grid-cols-4 gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+        <div className="flex gap-4 py-4">
+          <div className="flex flex-2 flex-col border border-solid border-[yellow] p-4">
+          <div className="flex gap-6">
+        <Button  className="bg-[#0166FF] rounded-full flex flex-1 w-full"  type="submit">Expense</Button>
+        <Button  className="rounded-full flex flex-1 w-full bg-[#E5E7EB] text-[#1F2937] hover:text-[#fff]"  type="submit">Income</Button>
+
           </div>
-          <div className="grid items-center grid-cols-4 gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+          <div className="grid items-center grid-cols-1 gap-4 ">
+            <Input   id="name" value="" placeholder ="₮ 000.00" className="col-span-4 border rounded-lg p-8 mt-4" />
           </div>
-        </div>
+          <div className="grid items-center grid-cols-1 gap-4">
+            <div className="mt-8">
+
+            <Label className="text-[gray] font-light" htmlFor="r2">Category</Label>
+            <Input id="username" value="Choose" className="col-span-4 mb-4 mt-2" />
+            <DialogFooter className="mt-6">
+            <div className="grid items-center grid-cols-2 gap-4 " >
+            <Label className="text-[gray] font-light" htmlFor="r1">Date</Label>
+            <Input id="date" value="date" className="col-span-4 mb-4" />
+          
+
+            </div>
+            <div className="grid items-center grid-cols-2 gap-4" >
+            <Label className="text-[gray] font-light" htmlFor="r2">Date</Label>
+            <Input id="date" value="date" className="col-span-4 mb-4" />
+          
+
+            </div>
+         
+        </DialogFooter>
+
         <DialogFooter>
           <Button  className="bg-[#0166FF] w-full rounded-full"  type="submit">Add Record</Button>
         </DialogFooter>
+            </div>
+
+          </div>
+          </div>
+
+          <div className="flex flex-1 border border-solid border-[gray] p-4">
+
+          
+
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+        <div className="flex flex-col">
+
+        <Label className="text-[gray] font-light mb-2" htmlFor="r2">Payee</Label>
+          <NavigationMenuTrigger className="w-full bg-[#E5E7EB]">Write here</NavigationMenuTrigger>
+
+        </div>
+        <div className="grid items-center grid-cols-1 gap-4 ">
+        <Label className="text-[gray] font-light mt-8" htmlFor="r2">Note</Label>
+
+        <Input   id="name" value="" placeholder ="Write here" className="col-span-4 border rounded-lg p-20 pb" />
+          </div>
+          <NavigationMenuContent>
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <NavigationMenuLink asChild>
+                  <a
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    href="/"
+                  >
+                    {/* <Icons.logo className="h-6 w-6" /> */}
+                    <div className="mb-2 mt-4 text-lg font-medium">
+                      shadcn/ui
+                    </div>
+                    <p className="text-sm leading-tight text-muted-foreground">
+                      Beautifully designed components that you can copy and
+                      paste into your apps. Accessible. Customizable. Open
+                      Source.
+                    </p>
+                  </a>
+                </NavigationMenuLink>
+              </li>
+            
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        
+     
+      </NavigationMenuList>
+    </NavigationMenu>
+
+
+
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
  
