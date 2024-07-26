@@ -33,7 +33,37 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { AddCategory } from "@/components/AddCategory";
+
+
+
+
+
 
 
 
@@ -59,36 +89,65 @@ export default function Record() {
       <DialogTrigger asChild>
         <Button variant="outline" className="bg-[#0166FF] text-[#fff] font-extralight text-base px-28 rounded-full"> + Add</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[825px]">
+      <DialogContent className="sm:max-w-[925px]">
         <DialogHeader  className="shadow-md">
           <DialogTitle >Add Record</DialogTitle>
           
         </DialogHeader>
         <div className="flex gap-4 py-4">
-          <div className="flex flex-2 flex-col border border-solid border-[yellow] p-4">
+          <div className="flex flex-1 flex-col border border-solid border-[yellow] p-4">
           <div className="flex gap-6">
-        <Button  className="bg-[#0166FF] rounded-full flex flex-1 w-full"  type="submit">Expense</Button>
-        <Button  className="rounded-full flex flex-1 w-full bg-[#E5E7EB] text-[#1F2937] hover:text-[#fff]"  type="submit">Income</Button>
+
+  <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger className="bg-[#0166FF] rounded-full " value="account">Expense</TabsTrigger>
+        <TabsTrigger className="rounded-full bg-[#E5E7EB] text-[#1F2937] hover:text-[#fff]" value="password">Income</TabsTrigger>
+      </TabsList>
+  </Tabs>
+
+
 
           </div>
-          <div className="grid items-center grid-cols-1 gap-4 ">
-            <Input   id="name" value="" placeholder ="₮ 000.00" className="col-span-4 border rounded-lg p-8 mt-4" />
+          
+          <div className="grid items-center grid-cols-1 gap-4 mt-4">
+          <Label className="text-[gray] font-light" htmlFor="r1">Amount</Label>
+          <Input   id="number" type="number" placeholder ="₮ 000.00" className="col-span-4 p-8 border rounded-lg" />
           </div>
           <div className="grid items-center grid-cols-1 gap-4">
-            <div className="mt-8">
+            <div className="mt-3">
 
-            <Label className="text-[gray] font-light" htmlFor="r2">Category</Label>
-            <Input id="username" value="Choose" className="col-span-4 mb-4 mt-2" />
-            <DialogFooter className="mt-6">
+            <Select className="">
+
+      <Label className="text-[gray] font-light " htmlFor="r1">Category</Label>
+      <SelectTrigger className="w-full mt-4">
+        <SelectValue placeholder="Find or choose category" />
+      </SelectTrigger>
+      <SelectContent className="">
+        <SelectGroup className="mb-4">
+          <SelectLabel>
+            <button><AddCategory/></button>
+          </SelectLabel>
+          <SelectItem value="apple">Food & Drinks</SelectItem>
+          <SelectItem value="banana">Shopping</SelectItem>
+          <SelectItem value="blueberry">Housing</SelectItem>
+          <SelectItem value="grapes">Vehicle</SelectItem>
+          <SelectItem value="pineapple">Transportation</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+
+      
+          
+            <DialogFooter className="gap-6 pr-12 mx-auto mt-6">
             <div className="grid items-center grid-cols-2 gap-4 " >
             <Label className="text-[gray] font-light" htmlFor="r1">Date</Label>
-            <Input id="date" value="date" className="col-span-4 mb-4" />
+            <Input type="date" id="number" value="number" className="col-span-4 mb-4" />
           
 
             </div>
             <div className="grid items-center grid-cols-2 gap-4" >
             <Label className="text-[gray] font-light" htmlFor="r2">Date</Label>
-            <Input id="date" value="date" className="col-span-4 mb-4" />
+            <Input type="time" id="number" value="date" className="col-span-4 mb-4" />
           
 
             </div>
@@ -112,25 +171,28 @@ export default function Record() {
         <NavigationMenuItem>
         <div className="flex flex-col">
 
-        <Label className="text-[gray] font-light mb-2" htmlFor="r2">Payee</Label>
-          <NavigationMenuTrigger className="w-full bg-[#E5E7EB]">Write here</NavigationMenuTrigger>
+        <Label className="text-[gray] font-light" htmlFor="r2">Payee</Label>
+          <NavigationMenuTrigger className="w-full bg-[#E5E7EB] mt-4">Write here</NavigationMenuTrigger>
 
         </div>
         <div className="grid items-center grid-cols-1 gap-4 ">
-        <Label className="text-[gray] font-light mt-8" htmlFor="r2">Note</Label>
 
-        <Input   id="name" value="" placeholder ="Write here" className="col-span-4 border rounded-lg p-20 pb" />
+        <div className="grid w-full gap-1.5 mt-4">
+        <Label className="text-[gray] font-light" htmlFor="r2">Note</Label>
+      <Textarea className="p-24" placeholder="Write here." id="message" />
+     </div>
+
           </div>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none bg-gradient-to-b from-muted/50 to-muted focus:shadow-md"
                     href="/"
                   >
-                    {/* <Icons.logo className="h-6 w-6" /> */}
-                    <div className="mb-2 mt-4 text-lg font-medium">
+                    {/* <Icons.logo className="w-6 h-6" /> */}
+                    <div className="mt-4 mb-2 text-lg font-medium">
                       shadcn/ui
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
