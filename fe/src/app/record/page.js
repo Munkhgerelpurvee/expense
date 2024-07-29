@@ -1,3 +1,4 @@
+'use client';
 import Navbar from "../../components/Navbar";
 import Categories from "../../components/Categories";
 import Food from "../../components/Food";
@@ -64,12 +65,6 @@ export default function Record() {
   // This is backEnd data
 
   const iconData = {
-    // home:<FaHouse /> ,
-    // gift:  <IoGift /> ,
-    // food:<PiForkKnifeDuotone />,
-    // drink:<PiWineFill />,
-    // taxi:<BsFillTaxiFrontFill />,
-    // shopping:<PiTShirtFill />,
 
     home: FaHouse,
     gift: IoGift,
@@ -112,12 +107,6 @@ export default function Record() {
     },
   ];
 
-  // <FaHouse />
-  //   <IoGift />
-  // <PiForkKnifeDuotone />
-  // <PiWineFill />
-  // <BsFillTaxiFrontFill />
-  // <PiTShirtFill />
 
   return (
     <>
@@ -193,6 +182,7 @@ export default function Record() {
                           </SelectTrigger>
                           <SelectContent className="">
                             <SelectGroup className="mb-4">
+                              {/* Now working here 07.29 */}
                               <SelectLabel>
                                 <button>
                                   <AddCategory />
@@ -320,9 +310,7 @@ export default function Record() {
               </DialogContent>
             </Dialog>
 
-            {/* <Button className="bg-[#0166FF] text-[#fff] font-extralight text-base px-28 rounded-full">
-            + Add
-          </Button> */}
+          
           </div>
 
           <div className="p-4 ">

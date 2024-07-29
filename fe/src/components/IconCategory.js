@@ -1,3 +1,16 @@
+
+'use client';
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select";
+
+
 import { FaHouse } from "react-icons/fa6";
 import { PiHouseLineFill } from "react-icons/pi";
 import { PiIdentificationBadgeFill } from "react-icons/pi";
@@ -30,14 +43,9 @@ import { PiToiletPaperFill } from "react-icons/pi";
 import { PiPencilLineFill } from "react-icons/pi";
 
 
-
-
-
-
-
 export const IconCategory = () => {
 
-    const icond = {
+    const icon = {
 
         home1: FaHouse,
         home2:PiHouseLineFill, 
@@ -71,14 +79,168 @@ export const IconCategory = () => {
         Pencil: PiPencilLineFill,
 
 
-    }
+    };
 
-
-
+    const categoryData = [
+        {
+          img: "home1",
+        
+        },
+        {
+          img: "home2",
+        
+        },
+        {
+          img: "IdentificationBadge",
+          
+        },
+        {
+          img: " IdentificationCard",
+         
+        },
+        {
+          img: " Ladder",
+       
+        },
+        {
+          img: "IntersectSquare",
+         
+        },
+        {
+            img: "ImageSquare",
+           
+          },
+          {
+            img: "MagnifyingGlassPlus",
+           
+          },
+        {
+            img: "  Microphone",
+           
+          },
+          {
+            img: "MicrosoftExcelLogo",
+           
+          },
+        {
+            img: "  Notepad",
+           
+          },
+          {
+            img: "ListPlus",
+           
+          },
+        {
+            img: " Leaf",
+           
+          },
+          {
+            img: "NumberFive",
+           
+          },
+        {
+            img: "NumberCircleSeven",
+           
+          },
+          {
+            img: "RoadHorizon",
+           
+          },
+         {
+            img: "HourglassSimpleMedium",
+        
+          },
+          {
+            img: " AnchorSimple",
+           
+          },
+        {
+            img: "BezierCurve",
+           
+          },
+          {
+            img: "Exclude",
+           
+          },
+        {
+            img: "Vignette",
+           
+          },
+          {
+            img: "Baseball",
+           
+          },
+        {
+            img: "Question",
+           
+          },
+          {
+            img: "Exam",
+           
+          },
+        {
+            img: "Watch",
+           
+          },
+          {
+            img: "GlobeSimple",
+           
+          },
+        {
+            img: "OrangeSlice",
+           
+          },
+          {
+            img: "Peace",
+           
+          },
+        {
+            img: "ToiletPaper",
+         
+           
+          },
+          {
+            img: " Pencil",
+           
+          },
+      ];
 
     return(
 
-        <>
+        <>  
+
+                        <Select className="">
+                         
+                    
+                          <SelectContent className="">
+                            <SelectGroup className="mb-4">
+                             
+                              {/* <SelectLabel>
+                                <button>
+                                  <AddCategory />
+                                </button>
+                              </SelectLabel> */}
+
+                              {categoryData.map((el, index) => {
+                                const IconComponent = icon[el.img];
+
+                                return (
+                                  <SelectItem key={index}>
+                                    <div  className="flex items-center gap-4">
+                                      <IconComponent className="w-5 h-5" />
+                                  
+        
+                                    </div>
+                                  </SelectItem>
+                                );
+                              })}
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select> 
+        
+        
+       
+
         </>
     )
 
