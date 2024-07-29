@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 
 
@@ -21,14 +22,17 @@ export const AddCategory = () => {
       <DialogTrigger asChild>
         <Button variant="outline" >
             <div className="flex items-center gap-4">
-        <Image
+        {/* <Image
       src={"/images/Vector(1).jpg"}
       alt="Logo"
       className="dark:invert"
       width={25}
       height={20}
       
-    />
+    /> */}
+
+<AiFillPlusCircle className="text-blue-700" />
+
 
             Add Category
 
