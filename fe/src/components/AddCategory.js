@@ -1,7 +1,6 @@
-
-'use client';
+"use client";
 import Image from "next/image";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,15 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { RiArrowDownSFill } from "react-icons/ri";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+
 import { Textarea } from "@/components/ui/textarea";
 // import {IconCategory} from "./IconCategory";
 import {
@@ -35,7 +26,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 
 import { FaHouse } from "react-icons/fa6";
 import { PiHouseLineFill } from "react-icons/pi";
@@ -67,259 +57,209 @@ import { PiOrangeSliceFill } from "react-icons/pi";
 import { PiPeaceFill } from "react-icons/pi";
 import { PiToiletPaperFill } from "react-icons/pi";
 import { PiPencilLineFill } from "react-icons/pi";
+import { HiOutlinePhoneArrowDownLeft } from "react-icons/hi2";
 
-
-
-
-
-export const AddCategory = () => {
+export default function AddCategory() {
   const icon = {
-
     home1: FaHouse,
-    home2:PiHouseLineFill, 
-    IdentificationBadge: PiIdentificationBadgeFill ,
-    IdentificationCard:PiIdentificationCardFill,
-    Ladder:PiLadderBold,
-    IntersectSquare:PiIntersectSquareFill,
-    ImageSquare:PiImageSquareFill,
-    MagnifyingGlassPlus:PiMagnifyingGlassPlusFill,
-    Microphone:BiSolidMicrophone,
-    MicrosoftExcelLogo:PiMicrosoftExcelLogoFill,
-    Notepad:PiNotepadFill,
-    ListPlus:PiListPlusBold,
-    Leaf:FaLeaf,
-    NumberFive:PiNumberFiveFill,
-    NumberCircleSeven:PiNumberCircleSevenFill,
-    RoadHorizon:PiRoadHorizonFill,
-    HourglassSimpleMedium:PiHourglassSimpleMediumFill,
-    AnchorSimple:PiAnchorSimpleFill,
-    BezierCurve:PiBezierCurveFill,
-    Exclude:PiExcludeFill ,
-    Vignette:PiVignetteFill,
-    Baseball:IoIosBaseball,
-    Question:BsFillQuestionCircleFill,
-    Exam:PiExamFill,
-    Watch:PiWatchFill ,
-    GlobeSimple:PiGlobeSimpleFill,
-    OrangeSlice:PiOrangeSliceFill,
-    Peace:PiPeaceFill,
-    ToiletPaper:PiToiletPaperFill,
+    home2: PiHouseLineFill,
+    IdentificationBadge: PiIdentificationBadgeFill,
+    IdentificationCard: PiIdentificationCardFill,
+    Ladder: PiLadderBold,
+    IntersectSquare: PiIntersectSquareFill,
+    ImageSquare: PiImageSquareFill,
+    MagnifyingGlassPlus: PiMagnifyingGlassPlusFill,
+    Microphone: BiSolidMicrophone,
+    MicrosoftExcelLogo: PiMicrosoftExcelLogoFill,
+    Notepad: PiNotepadFill,
+    ListPlus: PiListPlusBold,
+    Leaf: FaLeaf,
+    NumberFive: PiNumberFiveFill,
+    NumberCircleSeven: PiNumberCircleSevenFill,
+    RoadHorizon: PiRoadHorizonFill,
+    HourglassSimpleMedium: PiHourglassSimpleMediumFill,
+    AnchorSimple: PiAnchorSimpleFill,
+    BezierCurve: PiBezierCurveFill,
+    Exclude: PiExcludeFill,
+    Vignette: PiVignetteFill,
+    Baseball: IoIosBaseball,
+    Question: BsFillQuestionCircleFill,
+    Exam: PiExamFill,
+    Watch: PiWatchFill,
+    GlobeSimple: PiGlobeSimpleFill,
+    OrangeSlice: PiOrangeSliceFill,
+    Peace: PiPeaceFill,
+    ToiletPaper: PiToiletPaperFill,
     Pencil: PiPencilLineFill,
+    HiOutlinePhoneArrowDownLeft: HiOutlinePhoneArrowDownLeft,
+  };
 
-
-};
-
-const categoryData = [
-  {
-    img: "home1",
-  
-  },
-  {
-    img: "home2",
-  
-  },
-  {
-    img: "IdentificationBadge",
-    
-  },
-  {
-    img: " IdentificationCard",
-   
-  },
-  {
-    img: " Ladder",
- 
-  },
-  {
-    img: "IntersectSquare",
-   
-  },
-  {
+  const categoryData = [
+    {
+      img: "home1",
+    },
+    {
+      img: "home2",
+    },
+    {
+      img: "IdentificationBadge",
+    },
+    {
+      img: "IdentificationCard",
+    },
+    {
+      img: "Ladder",
+    },
+    {
       img: "ImageSquare",
-     
     },
     {
       img: "MagnifyingGlassPlus",
-     
     },
-  {
-      img: "  Microphone",
-     
+    {
+      img: "Microphone",
     },
     {
       img: "MicrosoftExcelLogo",
-     
     },
-  {
-      img: "  Notepad",
-     
+    {
+      img: "Notepad",
     },
     {
       img: "ListPlus",
-     
     },
-  {
-      img: " Leaf",
-     
+    {
+      img: "Leaf",
     },
     {
       img: "NumberFive",
-     
     },
-  {
+    {
       img: "NumberCircleSeven",
-     
     },
     {
       img: "RoadHorizon",
-     
-    },
-   {
-      img: "HourglassSimpleMedium",
-  
     },
     {
-      img: " AnchorSimple",
-     
+      img: "HourglassSimpleMedium",
     },
-  {
+    {
+      img: "AnchorSimple",
+    },
+    {
       img: "BezierCurve",
-     
     },
     {
       img: "Exclude",
-     
     },
-  {
+    {
       img: "Vignette",
-     
     },
     {
       img: "Baseball",
-     
     },
-  {
+    {
       img: "Question",
-     
     },
     {
       img: "Exam",
-     
     },
-  {
+    {
       img: "Watch",
-     
     },
     {
       img: "GlobeSimple",
-     
     },
-  {
+    {
       img: "OrangeSlice",
-     
     },
     {
       img: "Peace",
-     
-    },
-  {
-      img: "ToiletPaper",
-   
-     
     },
     {
-      img: " Pencil",
-     
+      img: "ToiletPaper",
     },
-];
-    return (
-<>
-<Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" >
-            <div className="flex items-center gap-4">
-        {/* <Image
-      src={"/images/Vector(1).jpg"}
-      alt="Logo"
-      className="dark:invert"
-      width={25}
-      height={20}
-      
-    /> */}
+    {
+      img: "Pencil",
+    },
+    {
+      img: "HiOutlinePhoneArrowDownLeft",
+    },
+  ];
 
-<AiFillPlusCircle className="text-blue-700" />
-
-
-            Add Category
-
-            </div>
-    
+  return (
+    <>
+      <div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">
+              <div className="flex items-center gap-4">
+                <AiFillPlusCircle className="text-blue-700" />
+                Add Category
+              </div>
             </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Add Category</DialogTitle>
-        </DialogHeader>
-        <div className="grid gap-4 py-4 grid-flow-row">
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add Category</DialogTitle>
+            </DialogHeader>
 
-          {/*  */}
+            <div className="flex gap-6">
+              <Select className="">
+                <SelectTrigger className="w-[aspec2/1] mt-4 ">
+                  <SelectValue
+                    placeholder=""
+                    // defaultValue={<FaHouse />}
+                  />
+                </SelectTrigger>
+                <SelectContent className="">
+                  <SelectGroup className="grid grid-cols-6 w-[450px] h-[250px] mb-4">
+                    {/* Now working here 07.29 */}
+                    {/* <SelectLabel>
+                      <button>
+                        <AddCategory />
+                      </button>
+                    </SelectLabel> */}
 
-        <div className="flex flex-1 border border-solid border-[gray]">
-                    <NavigationMenu>
-                    
-                        <NavigationMenuItem>
-                          <div className="flex flex-col">
-                           
-                            <NavigationMenuTrigger className="w-full bg-[#630625] mt-4">
-                              <FaHouse />
-                            </NavigationMenuTrigger>
-                          </div> 
-                        
-                          <NavigationMenuContent>
+                    {categoryData.map((el, index) => {
+                      const IconComponent = icon[el.img];
 
-                          {categoryData.map((el, index) => {
-                                const IconComponent = icon[el.img];
+                      return (
+                        <SelectItem key={el.index} value={el.img}>
+                          <div className="flex items-center gap-4">
+                            <IconComponent className="w-5 h-5" />
 
-                                return (
-                                 
-                                    <div key={index}  className="flex items-center gap-4">
-                                      <IconComponent className="w-5 h-5" />
-                                  
-                                    </div>
-                                  
-                                );
-                              })}
-                            
-                                 
-                         
-                    
-                            
-                            
-                           
-                      
-                            
-                          </NavigationMenuContent>
-                        </NavigationMenuItem>
-                    
-                    </NavigationMenu>
-                  </div>
-          {/*  Name is here  */}
-          <div className="relative flex items-center gap-4">
-           
-            <Input id="name" value=""  placeholder="Name" className="relative col-span-5" />
-            <RiArrowDownSFill className="absolute"/>
-            
-          </div>
-         
-        </div>
-        <DialogFooter>
-          <Button  className = "bg-[#16A34A] min-w-full"type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+                            <p>{el.name}</p>
+                          </div>
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
 
+              <div className="gap-4 py-4">
+                {/*  Name is here  */}
+                <div className="relative flex items-center w-full gap-4">
+                  <Input
+                    id="name"
+                    value=""
+                    placeholder="Name"
+                    className="relative col-span-9"
+                  />
+                  <RiArrowDownSFill className="absolute" />
+                </div>
+              </div>
+            </div>
 
-</>
-
-    )
+            <DialogFooter>
+              <Button className="bg-[#16A34A] min-w-full" type="submit">
+                Save changes
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
+    </>
+  );
 }

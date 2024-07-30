@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Navbar from "../../components/Navbar";
 import Categories from "../../components/Categories";
 import Food from "../../components/Food";
@@ -53,7 +53,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AddCategory } from "@/components/AddCategory";
+import AddCategory from "@/components/AddCategory";
 import { FaHouse } from "react-icons/fa6";
 import { IoGift } from "react-icons/io5";
 import { PiForkKnifeDuotone } from "react-icons/pi";
@@ -65,7 +65,6 @@ export default function Record() {
   // This is backEnd data
 
   const iconData = {
-
     home: FaHouse,
     gift: IoGift,
     food: PiForkKnifeDuotone,
@@ -78,35 +77,34 @@ export default function Record() {
     {
       img: "home",
       name: "Home",
-      color:"blue"
+      color: "blue",
     },
     {
       img: "gift",
       name: "Gift",
-       color:"red"
+      color: "red",
     },
     {
       img: "food",
       name: "Food",
-       color:"#F54949"
+      color: "#F54949",
     },
     {
       img: "drink",
       name: "Drink",
-      color:"#EC4899"
+      color: "#EC4899",
     },
     {
       img: "taxi",
       name: "Taxi",
-      color:"#FABE22",
+      color: "#FABE22",
     },
     {
       img: "shopping",
       name: "Shopping",
-      color:"#3ABEF7"
+      color: "#3ABEF7",
     },
   ];
-
 
   return (
     <>
@@ -194,10 +192,12 @@ export default function Record() {
 
                                 return (
                                   <SelectItem key={index} value={el.name}>
-                                    <div  className="flex items-center gap-4">
-                                      <IconComponent color={el.color}
-                                      className="w-5 h-5" />
-                                  
+                                    <div className="flex items-center gap-4">
+                                      <IconComponent
+                                        color={el.color}
+                                        className="w-5 h-5"
+                                      />
+
                                       <p>{el.name}</p>
                                     </div>
                                   </SelectItem>
@@ -309,8 +309,6 @@ export default function Record() {
                 </div>
               </DialogContent>
             </Dialog>
-
-          
           </div>
 
           <div className="p-4 ">
