@@ -1,4 +1,1 @@
-[
-  { "amount": 1000, "title": "fruits" },
-  { "amount": 20000, "title": "New Jeans" }
-]
+[{"amount":1000,"title":"fruits"},{"amount":20000,"title":"New Jeans"},{"title":"Candy","amount":"60"},{"title":"T-shirt","amount":"2500"},{"title":"Tuition","amount":"400000"}]

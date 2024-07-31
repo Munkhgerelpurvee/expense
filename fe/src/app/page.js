@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import { Container } from "../components/Container";
 import axios from "axios";
 
+
+
 export default function Home() {
   const [data, setData] = useState([]);
   const [accounts, setAccounts] = useState([]);
@@ -39,6 +41,8 @@ export default function Home() {
     };
     getData();
   }, []);
+
+  console.log(accounts);
 
   const createAccount = async () => {
     const newAccount = {
@@ -91,7 +95,7 @@ export default function Home() {
                 {accounts.map((account, index) => {
                   return (
                     <li key={index}>
-                      {account.amount} -{account.title}
+                      {account.title}: {account.amount}
                     </li>
                   );
                 })}
@@ -101,12 +105,12 @@ export default function Home() {
           {/*  */}
           <div>
             <div>
-              <div className="text-[gray] font-light" htmlFor="r1">
+              <div className="text-[gray] font-light">
                 Amount
               </div>
               <input
-                value="amount"
-                type=""
+                value={amount}
+                type="number"
                 placeholder="₮ 000.00"
                 className="col-span-4 p-8 mb-10 border rounded-lg"
                 onChange={(event) => {
@@ -116,12 +120,12 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-[gray] font-light" htmlFor="r1">
+              <div className="text-[gray] font-light">
                 Amount
               </div>
               <input
-                id="number"
-                type=""
+                value={title}
+                type="text"
                 placeholder="₮ 000.00"
                 className="col-span-4 p-8 mb-5 border rounded-lg"
                 onChange={(event) => {
@@ -129,7 +133,10 @@ export default function Home() {
                 }}
               />
             </div>
-            <button onClick={createAccount}>Create</button>
+            <Button onClick={createAccount} className="text-[#1F2937] hover:text-[#fff] bg-[#0166FF] font-bold  text-base rounded-full ">
+                + Create
+              </Button>
+            {/* <button onClick={createAccount}>Create</button> */}
           </div>
         </main>
       </Container>
