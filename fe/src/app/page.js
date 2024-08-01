@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Container } from "../components/Container";
-import axios from "axios";
+import axios from 'axios';
+
 
 export default function Home() {
   const [data, setData] = useState([]);
