@@ -1,6 +1,9 @@
 const express = require("express");
+
 var cors = require("cors");
+// Router оруулж ирэх
 const { accountRouter } = require("./routes/account.route");
+const { categoryRouter } = require("./routes/category.route");
 
 const app = express();
 
@@ -13,6 +16,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/accounts", accountRouter);
+app.use("/categories", categoryRouter);
+
+// app.use("/categories", categoryRouter);
 
 // app.get("/accounts", (req, res) => {
 //   // return all accounts      Note: энэ функцүүдийг controller гэнэ.

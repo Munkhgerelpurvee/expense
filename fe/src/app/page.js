@@ -6,8 +6,6 @@ import { useState, useEffect } from "react";
 import { Container } from "../components/Container";
 import axios from "axios";
 
-
-
 export default function Home() {
   const [data, setData] = useState([]);
   const [accounts, setAccounts] = useState([]);
@@ -43,6 +41,7 @@ export default function Home() {
   }, []);
 
   console.log(accounts);
+  //
 
   const createAccount = async () => {
     const newAccount = {
@@ -105,9 +104,7 @@ export default function Home() {
           {/*  */}
           <div>
             <div>
-              <div className="text-[gray] font-light">
-                Amount
-              </div>
+              <div className="text-[gray] font-light">Amount</div>
               <input
                 value={amount}
                 type="number"
@@ -120,9 +117,7 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-[gray] font-light">
-                Amount
-              </div>
+              <div className="text-[gray] font-light">Amount</div>
               <input
                 value={title}
                 type="text"
@@ -133,9 +128,12 @@ export default function Home() {
                 }}
               />
             </div>
-            <Button onClick={createAccount} className="text-[#1F2937] hover:text-[#fff] bg-[#0166FF] font-bold  text-base rounded-full ">
-                + Create
-              </Button>
+            <Button
+              onClick={createAccount}
+              className="text-[#1F2937] hover:text-[#fff] bg-[#0166FF] font-bold  text-base rounded-full "
+            >
+              + Create
+            </Button>
             {/* <button onClick={createAccount}>Create</button> */}
           </div>
         </main>

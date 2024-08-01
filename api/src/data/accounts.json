@@ -1,1 +1,1 @@
-[{"amount":1000,"title":"fruits"},{"amount":20000,"title":"New Jeans"},{"title":"Candy","amount":"60"},{"title":"T-shirt","amount":"2500"},{"title":"Tuition","amount":"400000"}]
+[{"amount":20000,"title":"New Jeans","id":"2938fd08-73a4-46ab-982a-d675af48fd1d"},{"title":"T-Shirt","amount":"52","id":"91443dc7-7507-43db-a350-763676925d53"},{"title":"T-Shirt","amount":"52.000","id":"7e14f2d1-7110-4295-b925-55c7209f7f54"},{"title":"toy","amount":"20.000","id":"f900f60d-021b-41d6-836e-c79613385c72"},{"title":"bananas","amount":"70.000","id":"2a66bf33-8718-45d8-abcd-283c418bfcd0"}]
