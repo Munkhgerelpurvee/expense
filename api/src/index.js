@@ -1,6 +1,6 @@
 const express = require("express");
+const cors = require("cors");
 
-var cors = require("cors");
 // Router оруулж ирэх
 const { accountRouter } = require("./routes/account.route");
 const { categoryRouter } = require("./routes/category.route");
