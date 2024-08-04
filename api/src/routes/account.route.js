@@ -1,4 +1,5 @@
 const { Router } = require("express");
+// contollers -c import hiine
 const {
   getAllAccounts,
   getAccount,
@@ -7,8 +8,10 @@ const {
   deleteAccount,
 } = require("../controllers/account.controller");
 
+// router object-ийг үүсгэнэ.
 const accountRouter = Router();
 
+// функц болгоныг router-тэй холбож өгнө.
 accountRouter
   .get("/", getAllAccounts)
   .post("/", createAccount)

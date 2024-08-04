@@ -15,28 +15,10 @@ export default function Home() {
 
   useEffect(() => {
     const getData = async () => {
-      try {
-        const res = await fetch("http://localhost:3001/");
-        const data = await res.json();
-
-        console.log(data);
-
-        setData(data);
-      } catch (error) {
-        console.log(console.log(error));
-      }
-    };
-
-    getData();
-  }, []);
-
-  //
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get("http://localhost:3001/accounts");
+      const response = await axios.get("http://localhost:3001/api/accounts");
       setAccounts(response.data);
 
-      console.log(response.data);
+      // console.log(response.data);
     };
     getData();
   }, []);
@@ -50,7 +32,7 @@ export default function Home() {
       amount,
     };
     const response = await axios.post(
-      "http://localhost:3001/accounts",
+      "http://localhost:3001/api/accounts",
       newAccount
     );
 
@@ -68,29 +50,9 @@ export default function Home() {
       </div>
       <Container>
         <main className="flex items-center justify-between min-h-screen p-24">
-          {/*  */}
-          <div>
-            <div className="w-full bg-pink-400">
-              {data.map((elem) => (
-                <div key={elem.id}>
-                  <div> {elem.title}</div>
-
-                  <div className="w-[200px] h-[100px p-4">{elem.desc}</div>
-
-                  <div
-                    className="w-[250px] h-[300px] rounded-lg"
-                    style={{
-                      backgroundImage: `url(${elem.src})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                </div>
-              ))}
-            </div>
-            {/*  */}
+         
             <div className="ml-10 bg-yellow-400">
-              <h1>Account</h1>
+              <h1 className="bg-pink-400">Account</h1>
               <ul>
                 {accounts.map((account, index) => {
                   return (
@@ -101,7 +63,7 @@ export default function Home() {
                 })}
               </ul>
             </div>
-          </div>
+        
           {/*  */}
           <div>
             <div>
@@ -118,7 +80,7 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-[gray] font-light">Amount</div>
+              <div className="text-[gray] font-light">Title</div>
               <input
                 value={title}
                 type="text"

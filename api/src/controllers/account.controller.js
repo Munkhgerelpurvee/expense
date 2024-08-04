@@ -10,6 +10,7 @@ const getAllAccounts = async (req, res, next) => {
     const rawData = fs.readFileSync(filePath);
     const accounts = JSON.parse(rawData);
     res.json(accounts);
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal server error" });

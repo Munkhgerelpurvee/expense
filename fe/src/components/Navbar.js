@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { Button } from "@/components/ui/button";
@@ -21,9 +22,13 @@ export default function Navbar() {
             height={27}
           />
     
-
+          <Link href="/record">
           <p className=" text-[#0F172A] text-base font-normal " >Dashboard</p>
+          
+          </Link>
+          <Link href="/dashboard">
           <p className=" text-[#0F172A] text-base font-semibold " >Records</p>
+          </Link>
           
 
         

@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const logger = require("./middleware/logger")
 
 // Router оруулж ирэх
 const { accountRouter } = require("./routes/account.route");
@@ -15,8 +16,18 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/accounts", accountRouter);
-app.use("/categories", categoryRouter);
+
+
+
+
+// use  функцийг ашиглан төрөл бүрийн Express-н midlleware-ийг холбодог. 
+app.use(logger);
+app.use("/api/accounts", accountRouter);
+app.use("/api/categories", categoryRouter);
+
+
+
+
 
 // app.use("/categories", categoryRouter);
 

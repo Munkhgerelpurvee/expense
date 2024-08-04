@@ -1,8 +1,11 @@
 "use client";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Categories from "../../components/Categories";
 import Food from "../../components/Food";
 import Image from "next/image";
+
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -60,6 +63,7 @@ import { PiForkKnifeDuotone } from "react-icons/pi";
 import { PiWineFill } from "react-icons/pi";
 import { BsFillTaxiFrontFill } from "react-icons/bs";
 import { PiTShirtFill } from "react-icons/pi";
+import { DivideCircleIcon, LogIn } from 'lucide-react';
 
 export default function Record() {
   // This is backEnd data
@@ -105,6 +109,66 @@ export default function Record() {
       color: "#3ABEF7",
     },
   ];
+  
+  const [accounts, setAccounts] = useState([]);
+  const [amount, setAmount] = useState();
+  const [title, setTitle] = useState();
+
+
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get("http://localhost:3001/api/accounts");
+      setAccounts(response.data);
+      console.log(response.data);
+      
+    };
+    getData();
+  }, []);
+
+  console.log(accounts);
+  // 
+  const createAccount = async () => {
+    const newAccount = {
+      title,
+      amount,
+    };
+    const response = await axios.post(
+      "http://localhost:3001/api/accounts",
+      newAccount
+    );
+
+    setAccounts([...accounts, response.data]);
+  };
+
+    // 
+    const [categories,setCategories] = useState([]);
+    const [category, setCategory] = useState();
+
+    useEffect(() => {
+      const getData = async () => {
+        const response = await axios.get("http://localhost:3001/api/categories");
+        setCategories(response.data);
+        console.log(response.data);
+        
+      };
+      getData();
+    }, []);
+  
+    console.log(categories);
+
+  const createCategory = async () => {
+    const newCategory = {
+      title,
+    };
+    const response = await axios.post(
+      "http://localhost:3001/api/categories",
+      newCategory
+    );
+
+    setCategories([...categories, response.data]);
+  };
+  
 
   return (
     <>
@@ -154,18 +218,36 @@ export default function Record() {
                         </TabsList>
                       </Tabs>
                     </div>
-
+                    {/* right now do this right now do this right now do this right now do this */}
+                    <div className="grid items-center grid-cols-1 gap-4 mt-4">
+                      <Label className="text-[gray] font-light" htmlFor="r1">
+                        title
+                      </Label>
+                      <Input
+                        value={title}
+                        type="text"
+                        placeholder="₮ 000.00"
+                        className="col-span-4 p-8 border rounded-lg"
+                        onCahnge={(event) => {
+                          setTitle(event.target.value);
+                        }}
+                      />
+                    </div>
                     <div className="grid items-center grid-cols-1 gap-4 mt-4">
                       <Label className="text-[gray] font-light" htmlFor="r1">
                         Amount
                       </Label>
                       <Input
-                        id="number"
+                        value={amount}
                         type="number"
                         placeholder="₮ 000.00"
                         className="col-span-4 p-8 border rounded-lg"
+                        onCahnge={(event) => {
+                          setAmount(event.target.value);
+                        }}
                       />
                     </div>
+                    {/*right now do this  */}
                     <div className="grid items-center grid-cols-1 gap-4">
                       <div className="mt-3">
                         <Select className="">
@@ -227,24 +309,27 @@ export default function Record() {
                               className="text-[gray] font-light"
                               htmlFor="r2"
                             >
-                              Date
+                              Time
                             </Label>
                             <Input
                               type="time"
                               id="number"
-                              value="date"
+                              value="time"
                               className="col-span-4 mb-4"
                             />
                           </div>
                         </DialogFooter>
 
                         <DialogFooter>
+                          {/* working here this button */}
                           <Button
+                            onClick={createAccount}
                             className="bg-[#0166FF] w-full rounded-full"
                             type="submit"
                           >
                             Add Record
                           </Button>
+                          {/*  working here this button */}
                         </DialogFooter>
                       </div>
                     </div>
@@ -346,13 +431,51 @@ export default function Record() {
             <h1 className="mb-4 text-[#1F2937] text-base font-semibold">
               Category
             </h1>
-
+                 {/*  Working here  Working here  Working here Working here */}
             <div className="flex px-4">
               <Categories />
-            </div>
+              </div>
+
+              {/* <div className="gap-4 items-center">
+                       {categories.map((el, index) => {
+                         return (
+                     <div>
+                          <div  key={index}>
+                          <Image
+                            src="/images/Union.svg"
+                            alt="Vecvor Logo"
+
+                            width={17}
+                            height={17}
+                          />
+                        </div>
+
+                       <div  key={index}
+                        className="text-[#1F2937] text-center font-light text-base">{el}</div>
+
+                       <div>
+                             <Image
+                              src="/images/arrow_drop_down.svg"
+                              alt="Vecvor Logo"
+                              width={7}
+                              height={7}
+                              />
+                      </div>
+                     
+                     </div>
+                      );
+                     })}
+               </div> */}
+
+               
+
+
+
 
             <div className="flex px-4 mt-2 ">
-              <Button className="text-[#1F2937] hover:text-[#fff] bg-[#E5E7EB] font-normal  text-base rounded-full ">
+              <Button 
+              onClick={createCategory}
+              className="text-[#1F2937] hover:text-[#fff] bg-[#E5E7EB] font-normal  text-base rounded-full ">
                 + Add Category
               </Button>
             </div>
@@ -379,8 +502,12 @@ export default function Record() {
           </div>
         </div>
 
+        {/* Second div */}
+
         <>
-          <div className="flex-1 bg-[#D1D5DB] border-gray-300 px-20">
+        <div>
+
+          <div className="flex-1 bg-[#D1D5DB] border-gray-300 px-10 py-10">
             Last 30 Days
             <div className="flex justify-between bg-[#fff] rounded-lg p-2 mb-4">
               <div className="flex items-center gap-4">
@@ -396,11 +523,45 @@ export default function Record() {
               Today
             </h1>
             <Food />
+            {/* Backend mapping */}
+            <div className="mb-10">
+              {
+                accounts.map((accountEl, index) => {
+                  return(
+                    <div className="flex justify-between bg-[#fff] rounded-lg p-2 mb-4">
+                    <div className='flex items-center gap-4' key={index}>
+                        <Checkbox/>
+                      <Image
+                      src="/images/Group 8 (1).jpg"
+                      alt="Logo"
+                      className="dark:invert"
+                      width={25}
+                      height={20}
+                      
+                      />
+                      <div  className="text-[gray] font-light text-xs" htmlFor="r1">{accountEl.title}</div>
+                    </div>
+                      <div className="flex items-center">
+                     <p className="text-[#23E01F] text-[10px] ">{accountEl.amount}</p>
+                     </div>
+                    </div>
+                  )
+
+                })
+              
+              }
+
+              </div>
+             {/* Backend mapping */}
+
+            </div>
             <h1 className="mb-4 text-[#1F2937] text-base font-semibold">
               Yesterday
             </h1>
             <Food />
-          </div>
+
+        </div>
+        
         </>
       </main>
     </>
