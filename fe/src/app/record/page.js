@@ -1,11 +1,10 @@
 "use client";
-import axios from 'axios';
+import axios from "axios";
 import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Categories from "../../components/Categories";
 import Food from "../../components/Food";
 import Image from "next/image";
-
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -63,7 +62,7 @@ import { PiForkKnifeDuotone } from "react-icons/pi";
 import { PiWineFill } from "react-icons/pi";
 import { BsFillTaxiFrontFill } from "react-icons/bs";
 import { PiTShirtFill } from "react-icons/pi";
-import { DivideCircleIcon, LogIn } from 'lucide-react';
+import { DivideCircleIcon, LogIn } from "lucide-react";
 
 export default function Record() {
   // This is backEnd data
@@ -109,30 +108,29 @@ export default function Record() {
       color: "#3ABEF7",
     },
   ];
-  
+
   const [accounts, setAccounts] = useState([]);
   const [amount, setAmount] = useState();
   const [title, setTitle] = useState();
-
-
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get("http://localhost:3001/api/accounts");
       setAccounts(response.data);
       console.log(response.data);
-      
     };
     getData();
   }, []);
 
   console.log(accounts);
-  // 
+  //
   const createAccount = async () => {
     const newAccount = {
       title,
       amount,
     };
+    // newAccout орж ирж байгаа эсэхийг байнга log хийж шалгах
+    console.log("-------", newAccount);
     const response = await axios.post(
       "http://localhost:3001/api/accounts",
       newAccount
@@ -141,26 +139,30 @@ export default function Record() {
     setAccounts([...accounts, response.data]);
   };
 
-    // 
-    const [categories,setCategories] = useState([]);
-    const [category, setCategory] = useState();
+  //
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState();
 
-    useEffect(() => {
-      const getData = async () => {
-        const response = await axios.get("http://localhost:3001/api/categories");
-        setCategories(response.data);
-        console.log(response.data);
-        
-      };
-      getData();
-    }, []);
-  
-    console.log(categories);
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get("http://localhost:3001/api/categories");
+      setCategories(response.data);
+      console.log(response.data);
+    };
+    getData();
+  }, []);
 
+  console.log(categories);
+
+  //
   const createCategory = async () => {
     const newCategory = {
       title,
     };
+
+    // newCategory орж ирж байгаа эсэхийг байнга log хийж шалгах
+    console.log("-------", newCategory);
+
     const response = await axios.post(
       "http://localhost:3001/api/categories",
       newCategory
@@ -168,7 +170,6 @@ export default function Record() {
 
     setCategories([...categories, response.data]);
   };
-  
 
   return (
     <>
@@ -228,7 +229,7 @@ export default function Record() {
                         type="text"
                         placeholder="₮ 000.00"
                         className="col-span-4 p-8 border rounded-lg"
-                        onCahnge={(event) => {
+                        onChange={(event) => {
                           setTitle(event.target.value);
                         }}
                       />
@@ -242,7 +243,7 @@ export default function Record() {
                         type="number"
                         placeholder="₮ 000.00"
                         className="col-span-4 p-8 border rounded-lg"
-                        onCahnge={(event) => {
+                        onChange={(event) => {
                           setAmount(event.target.value);
                         }}
                       />
@@ -431,12 +432,12 @@ export default function Record() {
             <h1 className="mb-4 text-[#1F2937] text-base font-semibold">
               Category
             </h1>
-                 {/*  Working here  Working here  Working here Working here */}
+            {/*  Working here  Working here  Working here Working here */}
             <div className="flex px-4">
               <Categories />
-              </div>
+            </div>
 
-              {/* <div className="gap-4 items-center">
+            {/* <div className="items-center gap-4">
                        {categories.map((el, index) => {
                          return (
                      <div>
@@ -467,15 +468,11 @@ export default function Record() {
                      })}
                </div> */}
 
-               
-
-
-
-
             <div className="flex px-4 mt-2 ">
-              <Button 
-              onClick={createCategory}
-              className="text-[#1F2937] hover:text-[#fff] bg-[#E5E7EB] font-normal  text-base rounded-full ">
+              <Button
+                onClick={createCategory}
+                className="text-[#1F2937] hover:text-[#fff] bg-[#E5E7EB] font-normal  text-base rounded-full "
+              >
                 + Add Category
               </Button>
             </div>
@@ -505,63 +502,60 @@ export default function Record() {
         {/* Second div */}
 
         <>
-        <div>
+          <div>
+            <div className="flex-1 bg-[#D1D5DB] border-gray-300 px-10 py-10">
+              Last 30 Days
+              <div className="flex justify-between bg-[#fff] rounded-lg p-2 mb-4">
+                <div className="flex items-center gap-4">
+                  <Checkbox />
+                  <Label className="text-[gray] font-light" htmlFor="r1">
+                    Select all
+                  </Label>
+                </div>
 
-          <div className="flex-1 bg-[#D1D5DB] border-gray-300 px-10 py-10">
-            Last 30 Days
-            <div className="flex justify-between bg-[#fff] rounded-lg p-2 mb-4">
-              <div className="flex items-center gap-4">
-                <Checkbox />
-                <Label className="text-[gray] font-light" htmlFor="r1">
-                  Select all
-                </Label>
+                <p className="text-[#94A3B8] text-[10px]">-35,500₮</p>
               </div>
-
-              <p className="text-[#94A3B8] text-[10px]">-35,500₮</p>
-            </div>
-            <h1 className="mb-4 text-[#1F2937] text-base font-semibold">
-              Today
-            </h1>
-            <Food />
-            {/* Backend mapping */}
-            <div className="mb-10">
-              {
-                accounts.map((accountEl, index) => {
-                  return(
+              <h1 className="mb-4 text-[#1F2937] text-base font-semibold">
+                Today
+              </h1>
+              <Food />
+              {/* Backend mapping */}
+              <div className="mb-10">
+                {accounts.map((accountEl, index) => {
+                  return (
                     <div className="flex justify-between bg-[#fff] rounded-lg p-2 mb-4">
-                    <div className='flex items-center gap-4' key={index}>
-                        <Checkbox/>
-                      <Image
-                      src="/images/Group 8 (1).jpg"
-                      alt="Logo"
-                      className="dark:invert"
-                      width={25}
-                      height={20}
-                      
-                      />
-                      <div  className="text-[gray] font-light text-xs" htmlFor="r1">{accountEl.title}</div>
-                    </div>
+                      <div className="flex items-center gap-4" key={index}>
+                        <Checkbox />
+                        <Image
+                          src="/images/Group 8 (1).jpg"
+                          alt="Logo"
+                          className="dark:invert"
+                          width={25}
+                          height={20}
+                        />
+                        <div
+                          className="text-[gray] font-light text-xs"
+                          htmlFor="r1"
+                        >
+                          {accountEl.title}
+                        </div>
+                      </div>
                       <div className="flex items-center">
-                     <p className="text-[#23E01F] text-[10px] ">{accountEl.amount}</p>
-                     </div>
+                        <p className="text-[#23E01F] text-[10px] ">
+                          {accountEl.amount}
+                        </p>
+                      </div>
                     </div>
-                  )
-
-                })
-              
-              }
-
+                  );
+                })}
               </div>
-             {/* Backend mapping */}
-
+              {/* Backend mapping */}
             </div>
             <h1 className="mb-4 text-[#1F2937] text-base font-semibold">
               Yesterday
             </h1>
             <Food />
-
-        </div>
-        
+          </div>
         </>
       </main>
     </>
