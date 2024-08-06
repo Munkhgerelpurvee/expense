@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -58,6 +59,7 @@ import { PiPeaceFill } from "react-icons/pi";
 import { PiToiletPaperFill } from "react-icons/pi";
 import { PiPencilLineFill } from "react-icons/pi";
 import { HiOutlinePhoneArrowDownLeft } from "react-icons/hi2";
+import { IconCategory } from "./Icon-category";
 
 export default function AddCategory() {
   const icon = {
@@ -221,7 +223,7 @@ export default function AddCategory() {
                       </button>
                     </SelectLabel> */}
 
-                    {categoryData.map((el, index) => {
+                    {/* {categoryData.map((el, index) => {
                       const IconComponent = icon[el.img];
 
                       return (
@@ -233,7 +235,11 @@ export default function AddCategory() {
                           </div>
                         </SelectItem>
                       );
-                    })}
+                    })} */}
+                    {/* <IconCategory
+                      categoryIcon={categoryIcon}
+                      setCategoryIcon={setCategoryIcon}
+                    /> */}
                   </SelectGroup>
                 </SelectContent>
               </Select>

@@ -13,6 +13,7 @@ export const UserContextProvider = ({ children }) => {
     lastname: "ovog",
   });
   return (
+    // value prop дамжуулах
     <UserContext.Provider value={{ userInfo, setUserInfo }}>
       {children}
     </UserContext.Provider>

@@ -131,6 +131,7 @@ export default function Record() {
     };
     // newAccout орж ирж байгаа эсэхийг байнга log хийж шалгах
     console.log("-------", newAccount);
+    // new account үүсгэх
     const response = await axios.post(
       "http://localhost:3001/api/accounts",
       newAccount
@@ -139,7 +140,7 @@ export default function Record() {
     setAccounts([...accounts, response.data]);
   };
 
-  //
+  // All Category авах
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState();
 
@@ -154,7 +155,7 @@ export default function Record() {
 
   console.log(categories);
 
-  //
+  // newCategory  үүсгэх
   const createCategory = async () => {
     const newCategory = {
       title,
@@ -219,7 +220,7 @@ export default function Record() {
                         </TabsList>
                       </Tabs>
                     </div>
-                    {/* right now do this right now do this right now do this right now do this */}
+                    {/* post хүсэлтээр  post хүсэлтээр   post хүсэлтээр  post хүсэлтээр  */}
                     <div className="grid items-center grid-cols-1 gap-4 mt-4">
                       <Label className="text-[gray] font-light" htmlFor="r1">
                         title
