@@ -1,5 +1,8 @@
 "use-client";
 import Image from "next/image";
+import { useState, useEffect, useContext } from "react";
+import { CategoryContext } from "./CategoryContext";
+
 import {
   Select,
   SelectContent,
@@ -49,7 +52,6 @@ import { PiPencilLineFill } from "react-icons/pi";
 import { HiOutlinePhoneArrowDownLeft } from "react-icons/hi2";
 
 const iconDatas = [
-  { icon: FaHouse, label: "FaHouse" },
   { icon: IoGift, label: "IoGift" },
   { icon: PiForkKnifeDuotone, label: "PiForkKnifeDuotone" },
   { icon: PiWineFill, label: "PiWineFill" },
@@ -88,21 +90,20 @@ const iconDatas = [
   { icon: HiOutlinePhoneArrowDownLeft, label: "HiOutlinePhoneArrowDownLeft" },
 ];
 
-const colors = [
-  "#F54949",
-  "#EC4899",
-  "#FABE22",
-  "#3ABEF7",
-  "purple",
-  "red",
-  "blue",
-];
+const colors = ["green", "pink", "gray", "yellow", "purple", "red", "blue"];
 
-export const IconCategory = ({ categoryIcon, setCategoryIcon }) => {
+export const IconCategory = () => {
   const [selectedColor, setSelectedColor] = useState("");
+  // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
+  const { categoryInfo, setCategoryInfo } = useContext(CategoryContext);
 
   return (
-    <Select value={categoryIcon} onValueChange={setCategoryIcon}>
+    <Select
+      defaultValue={iconDatas[2]}
+      onValueChange={(value) =>
+        setCategoryInfo({ ...categoryInfo, iconName: value })
+      }
+    >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder={<FaHouse />} />
       </SelectTrigger>
@@ -110,7 +111,7 @@ export const IconCategory = ({ categoryIcon, setCategoryIcon }) => {
         <SelectGroup>
           <div className="flex flex-col gap-10">
             <div className="grid grid-cols-6 w-[450px] h-[250px] mb-4">
-              <SelectLabel>Icons</SelectLabel>
+              {/* <SelectLabel>Icons</SelectLabel> */}
               {iconDatas.map((el, index) => {
                 const IconComponent = el.icon;
                 return (

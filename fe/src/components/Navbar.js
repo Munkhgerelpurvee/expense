@@ -8,12 +8,7 @@ export default function Navbar() {
   return (
     <div>
       <main className="flex justify-between p-4 border shadow-lg">
-
-
         <div className="flex items-center gap-4">
-
-       
-       
           <Image
             src="/images/Vector.svg"
             alt="Vecvor Logo"
@@ -21,17 +16,19 @@ export default function Navbar() {
             width={27}
             height={27}
           />
-    
+
           <Link href="/record">
-          <p className=" text-[#0F172A] text-base font-normal " >Dashboard</p>
-          
+            <p className=" text-[#0F172A] text-base font-normal ">Dashboard</p>
           </Link>
           <Link href="/dashboard">
-          <p className=" text-[#0F172A] text-base font-semibold " >Records</p>
+            <p className=" text-[#0F172A] text-base font-semibold ">Records</p>
           </Link>
-          
 
-        
+          <Link href="/record123">
+            <p className=" text-[#0F172A] text-base font-semibold ">
+              Record123
+            </p>
+          </Link>
         </div>
 
         <div className="flex gap-4 ">

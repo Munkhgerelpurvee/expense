@@ -63,6 +63,8 @@ const updateAccount = async (req, res, next) => {
     const id = req.params.id;
     const data = accounts.find((el) => el.id === id);
 
+    // array splice() - use then writeFileSync hiih
+
     res.json(data);
   } catch (error) {
     console.log(error);

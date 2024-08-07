@@ -36,7 +36,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Textarea } from "@/components/ui/textarea";
+
 import {
   Select,
   SelectContent,
@@ -63,8 +63,9 @@ import { PiWineFill } from "react-icons/pi";
 import { BsFillTaxiFrontFill } from "react-icons/bs";
 import { PiTShirtFill } from "react-icons/pi";
 import { DivideCircleIcon, LogIn } from "lucide-react";
+import { IconCategory } from "@/components/Icon-category";
 
-export default function Record() {
+export default function Record({ categoryIcon, setCategoryIcon }) {
   // This is backEnd data
 
   const iconData = {
@@ -287,6 +288,10 @@ export default function Record() {
                                   </SelectItem>
                                 );
                               })}
+                              {/* <IconCategory
+                                categoryIcon={categoryIcon}
+                                setCategoryIcon={setCategoryIcon}
+                              /> */}
                             </SelectGroup>
                           </SelectContent>
                         </Select>

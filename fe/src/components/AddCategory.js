@@ -223,7 +223,7 @@ export default function AddCategory() {
                       </button>
                     </SelectLabel> */}
 
-                    {/* {categoryData.map((el, index) => {
+                    {categoryData.map((el, index) => {
                       const IconComponent = icon[el.img];
 
                       return (
@@ -235,7 +235,7 @@ export default function AddCategory() {
                           </div>
                         </SelectItem>
                       );
-                    })} */}
+                    })}
                     {/* <IconCategory
                       categoryIcon={categoryIcon}
                       setCategoryIcon={setCategoryIcon}
