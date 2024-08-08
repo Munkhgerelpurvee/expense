@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import * as React from "react";
 import Link from "next/link";
 

@@ -90,16 +90,24 @@ const iconDatas = [
   { icon: HiOutlinePhoneArrowDownLeft, label: "HiOutlinePhoneArrowDownLeft" },
 ];
 
-const colors = ["green", "pink", "gray", "yellow", "purple", "red", "blue"];
+const colors = [
+  "#23E01F",
+  "#EC4899",
+  "#374151",
+  "#FABE22",
+  "#3ABEF7",
+  "#F54949",
+  "#0166FF",
+];
 
 export const IconCategory = () => {
   const [selectedColor, setSelectedColor] = useState("");
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
-  const { categoryInfo, setCategoryInfo } = useContext(CategoryContext);
+  const { categoryInfo, color, setCategoryInfo } = useContext(CategoryContext);
 
   return (
     <Select
-      defaultValue={iconDatas[2]}
+      defaultValue={iconDatas[0]}
       onValueChange={(value) =>
         setCategoryInfo({ ...categoryInfo, iconName: value })
       }

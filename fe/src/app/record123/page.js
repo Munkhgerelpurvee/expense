@@ -37,22 +37,34 @@ import {
 
 // import from component
 import { IconCategory } from "@/components/Icon-category";
-
 import Navbar from "../../components/Navbar";
 import AddRecord from "@/components/AddRecord";
 import { CategoryContext } from "@/components/CategoryContext";
 
-export default function Record123({ categoryIcon, setCategoryIcon, color }) {
+export default function Record123({}) {
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
-  const { CategoryInfo, setCategoryInfo } = useContext(CategoryContext);
-  console.log(CategoryInfo);
+  const {
+    CategoryInfo,
+    setCategoryInfo,
+    createCategory,
+    categories,
+    setCategories,
+    categoryName,
+    setCategoryName,
+    iconName,
+    setIconName,
+    color,
+    setColor,
+  } = useContext(CategoryContext);
+  console.log(categories);
   // log hiihed console deer orj irj bna
 
   //  State зарлах
-  const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState();
-  const [categoryName, setcategoryName] = useState();
-  const [iconName, setIconName] = useState();
+  // const [categories, setCategories] = useState([]);
+  // const [category, setCategory] = useState();
+  // const [categoryName, setcategoryName] = useState();
+  // const [iconName, setIconName] = useState();
+  // const [color, setColor] = useState("");
 
   // All Category авах
   useEffect(() => {
@@ -64,26 +76,25 @@ export default function Record123({ categoryIcon, setCategoryIcon, color }) {
     getData();
   }, []);
 
-  console.log(categories);
+  // console.log(categories);
 
   // newCategory  үүсгэх
-  const createCategory = async () => {
-    const newCategory = {
-      categoryName,
-      iconName,
-      color,
-    };
+  // const createCategory = async () => {
+  //   const newCategory = {
+  //     categoryName,
+  //     iconName,
+  //   };
 
-    // newCategory орж ирж байгаа эсэхийг байнга log хийж шалгах
-    console.log("-------", newCategory);
+  //   newCategory орж ирж байгаа эсэхийг байнга log хийж шалгах
+  //   console.log("-------", newCategory);
 
-    const response = await axios.post(
-      "http://localhost:3001/api/categories",
-      newCategory
-    );
+  //   const response = await axios.post(
+  //     "http://localhost:3001/api/categories",
+  //     newCategory
+  //   );
 
-    setCategories([...categories, response.data]);
-  };
+  //   setCategories([...categories, response.data]);
+  // };
 
   return (
     <>
@@ -155,10 +166,7 @@ export default function Record123({ categoryIcon, setCategoryIcon, color }) {
                     <DialogTitle>Add Category</DialogTitle>
                   </DialogHeader>
                   <div className="flex justify-center gap-4 ">
-                    <IconCategory
-                      categoryIcon={categoryIcon}
-                      setCategoryIcon={setCategoryIcon}
-                    />
+                    <IconCategory />
                     <div className="flex items-center gap-4">
                       <Input
                         id="name"
@@ -166,7 +174,7 @@ export default function Record123({ categoryIcon, setCategoryIcon, color }) {
                         placeholder="Write Categoty Name"
                         className="col-span-3"
                         onChange={(event) => {
-                          setcategoryName(event.target.value);
+                          setCategoryName(event.target.value);
                         }}
                       />
                     </div>
