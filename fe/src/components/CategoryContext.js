@@ -16,6 +16,7 @@ export const CategoryContextProvider = ({ children }) => {
   const [iconName, setIconName] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [color, setColor] = useState("");
+
   // newCategory  үүсгэх
   const createCategory = async () => {
     try {
@@ -35,7 +36,6 @@ export const CategoryContextProvider = ({ children }) => {
       setCategories([...categories, response.data]);
     } catch (error) {
       console.log(error);
-      response.status(500).json({ error: "Internal server error" });
     }
   };
 

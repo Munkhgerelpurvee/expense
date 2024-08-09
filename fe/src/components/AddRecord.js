@@ -38,7 +38,7 @@ export default function AddRecord() {
       <Dialog>
         <DialogTrigger asChild>
           <Button className="bg-[#0166FF] text-[#fff] font-extralight text-base px-28 rounded-full">
-            + Add
+            + Add to AddCategory
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[925px]">
@@ -87,7 +87,7 @@ export default function AddRecord() {
                       className="bg-[#0166FF] w-full rounded-full mt-10"
                       type="submit"
                     >
-                      Add Record
+                      Add Record to amount & category
                     </Button>
                   </DialogFooter>
                 </div>

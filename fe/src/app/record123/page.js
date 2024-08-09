@@ -47,8 +47,8 @@ export default function Record123({}) {
     CategoryInfo,
     setCategoryInfo,
     createCategory,
-    categories,
-    setCategories,
+    // categories,
+    // setCategories,
     categoryName,
     setCategoryName,
     iconName,
@@ -56,11 +56,11 @@ export default function Record123({}) {
     color,
     setColor,
   } = useContext(CategoryContext);
-  console.log(categories);
+  // console.log(categories);
   // log hiihed console deer orj irj bna
 
   //  State зарлах
-  // const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   // const [category, setCategory] = useState();
   // const [categoryName, setcategoryName] = useState();
   // const [iconName, setIconName] = useState();
@@ -158,7 +158,7 @@ export default function Record123({}) {
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="text-[#1F2937] hover:text-[#fff] bg-[#E5E7EB] font-normal  text-base rounded-full ">
-                    + Add Category
+                    + Add Category with eye
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
@@ -166,7 +166,7 @@ export default function Record123({}) {
                     <DialogTitle>Add Category</DialogTitle>
                   </DialogHeader>
                   <div className="flex justify-center gap-4 ">
-                    <IconCategory />
+                    <IconCategory IconCat={iconName} setIconCat={setIconName} />
                     <div className="flex items-center gap-4">
                       <Input
                         id="name"
@@ -185,7 +185,7 @@ export default function Record123({}) {
                       className="bg-[#16A34A] min-w-full"
                       type="submit"
                     >
-                      Save changes
+                      Save changes to eye
                     </Button>
                   </DialogFooter>
                 </DialogContent>

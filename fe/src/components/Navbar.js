@@ -17,16 +17,21 @@ export default function Navbar() {
             height={27}
           />
 
-          <Link href="/record">
+          <Link href="/dashboard">
             <p className=" text-[#0F172A] text-base font-normal ">Dashboard</p>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/record">
             <p className=" text-[#0F172A] text-base font-semibold ">Records</p>
           </Link>
 
           <Link href="/record123">
             <p className=" text-[#0F172A] text-base font-semibold ">
               Record123
+            </p>
+          </Link>
+          <Link href="/record456">
+            <p className=" text-[#0F172A] text-base font-semibold ">
+              Record456
             </p>
           </Link>
         </div>

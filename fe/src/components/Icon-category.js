@@ -100,17 +100,34 @@ const colors = [
   "#0166FF",
 ];
 
-export const IconCategory = () => {
+export const IconCategory = ({ IconCat, setIconCat }) => {
   const [selectedColor, setSelectedColor] = useState("");
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
-  const { categoryInfo, color, setCategoryInfo } = useContext(CategoryContext);
+  // const { categoryInfo, color, setCategoryInfo } = useContext(CategoryContext);
+  // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
+  // const {
+  //   CategoryInfo,
+  //   setCategoryInfo,
+  //   createCategory,
+  //   categories,
+  //   setCategories,
+  //   categoryName,
+  //   setCategoryName,
+  //   iconName,
+  //   setIconName,
+  //   color,
+  //   setColor,
+  // } = useContext(CategoryContext);
+  // console.log("-Icon-Category.js- Res.Data --", categories);
 
   return (
     <Select
-      defaultValue={iconDatas[0]}
-      onValueChange={(value) =>
-        setCategoryInfo({ ...categoryInfo, iconName: value })
-      }
+      value={IconCat}
+      onValueChange={setIconCat}
+      defaultValue={iconDatas[1]}
+      // onValueChange={(value) =>
+      //   setCategories({ ...categories, iconName: value })
+      // }
     >
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder={<FaHouse />} />

@@ -34,15 +34,34 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// import from component
+// import from component & CONTEXT
 import { IconCategory } from "@/components/Icon-category";
 import { CategoryContext } from "@/components/CategoryContext";
+import Categories from "./Categories";
 
-export default function AddCategory123() {
-  const { categoryInfo, setCategoryInfo, createCategory } =
-    useContext(CategoryContext);
+export default function AddCategory123({ IconCat, setIconCat }) {
+  // const { categoryInfo, setCategoryInfo, createCategory } =
+  //   useContext(CategoryContext);
   // log hiihed console deer orj irj bna
   //   console.log(CategoryInfo);
+
+  // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
+  // const {
+  //   CategoryInfo,
+  //   setCategoryInfo,
+  //   createCategory,
+  //   categories,
+  //   setCategories,
+  //   categoryName,
+  //   setCategoryName,
+  //   iconName,
+  //   setIconName,
+  //   color,
+  //   setColor,
+  // } = useContext(CategoryContext);
+  //Category орж ирж байгаа эсэхийг байнга log хийж шалгах
+  console.log("-AddCategory123- Res.Data --", Categories);
+
   return (
     <>
       <div className="flex px-4 mt-2 ">
@@ -55,24 +74,19 @@ export default function AddCategory123() {
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Add Category</DialogTitle>
+              <DialogTitle>Add Category with icon & color</DialogTitle>
             </DialogHeader>
             <div className="flex justify-center gap-4 ">
-              <IconCategory
-              // categoryIcon={categoryIcon}
-              // setCategoryIcon={setCategoryIcon}
-              />
+              <IconCategory />
               <div className="flex items-center gap-4">
                 <Input
                   id="name"
-                  //   value={categoryName}
+                  type="text"
+                  value={categoryName}
                   placeholder="Write Categoty Name"
                   className="col-span-3"
                   onChange={(event) => {
-                    setCategoryInfo({
-                      ...categoryInfo,
-                      categoryName: event.target.value,
-                    });
+                    setCategoryName(event.target.value);
                   }}
                 />
               </div>
@@ -83,7 +97,7 @@ export default function AddCategory123() {
                 className="bg-[#16A34A] min-w-full"
                 type="submit"
               >
-                Save changes
+                Save changes to AddCategory with icon & color
               </Button>
             </DialogFooter>
           </DialogContent>
