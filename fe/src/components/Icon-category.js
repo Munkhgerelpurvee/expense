@@ -1,4 +1,5 @@
 "use-client";
+import * as Icons from "react-icons/fa";
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { CategoryContext } from "./CategoryContext";
@@ -51,44 +52,51 @@ import { PiToiletPaperFill } from "react-icons/pi";
 import { PiPencilLineFill } from "react-icons/pi";
 import { HiOutlinePhoneArrowDownLeft } from "react-icons/hi2";
 
+
+// const iconDatas = [
+//   { icon: IoGift, label: "IoGift" },
+//   { icon: PiForkKnifeDuotone, label: "PiForkKnifeDuotone" },
+//   { icon: PiWineFill, label: "PiWineFill" },
+//   { icon: BsFillTaxiFrontFill, label: "BsFillTaxiFrontFill" },
+//   { icon: PiTShirtFill, label: "PiTShirtFill" },
+//   { icon: FaHouse, label: "FaHouse" },
+//   { icon: PiHouseLineFill, label: "PiHouseLineFill" },
+//   { icon: PiIdentificationBadgeFill, label: "PiIdentificationBadgeFill" },
+//   { icon: PiIdentificationCardFill, label: "PiIdentificationCardFill" },
+//   { icon: PiLadderBold, label: "PiLadderBold" },
+//   { icon: PiIntersectSquareFill, label: "PiIntersectSquareFill" },
+//   { icon: PiImageSquareFill, label: "PiImageSquareFill" },
+//   { icon: PiMagnifyingGlassPlusFill, label: "PiMagnifyingGlassPlusFill" },
+//   { icon: BiSolidMicrophone, label: "BiSolidMicrophone" },
+//   { icon: PiMicrosoftExcelLogoFill, label: "PiMicrosoftExcelLogoFill" },
+//   { icon: PiNotepadFill, label: "PiNotepadFill" },
+//   { icon: PiListPlusBold, label: "PiListPlusBold" },
+//   { icon: FaLeaf, lebel: "FaLeaf" },
+//   { icon: PiNumberFiveFill, label: "PiNumberFiveFill" },
+//   { icon: PiNumberCircleSevenFill, label: "PiNumberCircleSevenFill" },
+//   { icon: PiRoadHorizonFill, label: "PiRoadHorizonFill" },
+//   { icon: PiHourglassSimpleMediumFill, label: "PiHourglassSimpleMediumFill" },
+//   { icon: PiAnchorSimpleFill, label: "PiAnchorSimpleFill" },
+//   { icon: PiBezierCurveFill, label: "PiBezierCurveFill" },
+//   { icon: PiExcludeFill, label: "PiExcludeFill" },
+//   { icon: PiVignetteFill, label: "PiVignetteFill" },
+//   { icon: IoIosBaseball, label: "IoIosBaseball" },
+//   { icon: BsFillQuestionCircleFill, label: "BsFillQuestionCircleFill" },
+//   { icon: PiExamFill, label: "PiExamFill" },
+//   { icon: PiWatchFill, label: "PiWatchFill" },
+//   { icon: PiGlobeSimpleFill, label: "PiGlobeSimpleFill" },
+//   { icon: PiOrangeSliceFill, label: "PiOrangeSliceFill" },
+//   { icon: PiPeaceFill, label: "PiPeaceFill" },
+//   { icon: PiToiletPaperFill, label: "PiToiletPaperFill" },
+//   { icon: PiPencilLineFill, label: "PiPencilLineFill" },
+//   { icon: HiOutlinePhoneArrowDownLeft, label: "HiOutlinePhoneArrowDownLeft" },
+// ];
+
 const iconDatas = [
-  { icon: IoGift, label: "IoGift" },
-  { icon: PiForkKnifeDuotone, label: "PiForkKnifeDuotone" },
-  { icon: PiWineFill, label: "PiWineFill" },
-  { icon: BsFillTaxiFrontFill, label: "BsFillTaxiFrontFill" },
-  { icon: PiTShirtFill, label: "PiTShirtFill" },
-  { icon: FaHouse, label: "FaHouse" },
-  { icon: PiHouseLineFill, label: "PiHouseLineFill" },
-  { icon: PiIdentificationBadgeFill, label: "PiIdentificationBadgeFill" },
-  { icon: PiIdentificationCardFill, label: "PiIdentificationCardFill" },
-  { icon: PiLadderBold, label: "PiLadderBold" },
-  { icon: PiIntersectSquareFill, label: "PiIntersectSquareFill" },
-  { icon: PiImageSquareFill, label: "PiImageSquareFill" },
-  { icon: PiMagnifyingGlassPlusFill, label: "PiMagnifyingGlassPlusFill" },
-  { icon: BiSolidMicrophone, label: "BiSolidMicrophone" },
-  { icon: PiMicrosoftExcelLogoFill, label: "PiMicrosoftExcelLogoFill" },
-  { icon: PiNotepadFill, label: "PiNotepadFill" },
-  { icon: PiListPlusBold, label: "PiListPlusBold" },
-  { icon: FaLeaf, lebel: "FaLeaf" },
-  { icon: PiNumberFiveFill, label: "PiNumberFiveFill" },
-  { icon: PiNumberCircleSevenFill, label: "PiNumberCircleSevenFill" },
-  { icon: PiRoadHorizonFill, label: "PiRoadHorizonFill" },
-  { icon: PiHourglassSimpleMediumFill, label: "PiHourglassSimpleMediumFill" },
-  { icon: PiAnchorSimpleFill, label: "PiAnchorSimpleFill" },
-  { icon: PiBezierCurveFill, label: "PiBezierCurveFill" },
-  { icon: PiExcludeFill, label: "PiExcludeFill" },
-  { icon: PiVignetteFill, label: "PiVignetteFill" },
-  { icon: IoIosBaseball, label: "IoIosBaseball" },
-  { icon: BsFillQuestionCircleFill, label: "BsFillQuestionCircleFill" },
-  { icon: PiExamFill, label: "PiExamFill" },
-  { icon: PiWatchFill, label: "PiWatchFill" },
-  { icon: PiGlobeSimpleFill, label: "PiGlobeSimpleFill" },
-  { icon: PiOrangeSliceFill, label: "PiOrangeSliceFill" },
-  { icon: PiPeaceFill, label: "PiPeaceFill" },
-  { icon: PiToiletPaperFill, label: "PiToiletPaperFill" },
-  { icon: PiPencilLineFill, label: "PiPencilLineFill" },
-  { icon: HiOutlinePhoneArrowDownLeft, label: "HiOutlinePhoneArrowDownLeft" },
-];
+  { icon:"IoGift" },
+  { icon:"PiForkKnifeDuotone" },
+  { icon:"PiWineFill" }];
+
 
 const colors = [
   "#23E01F",
@@ -100,24 +108,18 @@ const colors = [
   "#0166FF",
 ];
 
+// by new method:
+
+
 export const IconCategory = ({ IconCat, setIconCat }) => {
-  const [selectedColor, setSelectedColor] = useState("");
+
+
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
-  // const { categoryInfo, color, setCategoryInfo } = useContext(CategoryContext);
-  // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
-  // const {
-  //   CategoryInfo,
-  //   setCategoryInfo,
-  //   createCategory,
-  //   categories,
-  //   setCategories,
-  //   categoryName,
-  //   setCategoryName,
-  //   iconName,
-  //   setIconName,
-  //   color,
-  //   setColor,
-  // } = useContext(CategoryContext);
+
+  const {
+    selectedColor,
+    setSelectedColor,
+  } = useContext(CategoryContext);
   // console.log("-Icon-Category.js- Res.Data --", categories);
 
   return (
@@ -138,11 +140,11 @@ export const IconCategory = ({ IconCat, setIconCat }) => {
             <div className="grid grid-cols-6 w-[450px] h-[250px] mb-4">
               {/* <SelectLabel>Icons</SelectLabel> */}
               {iconDatas.map((el, index) => {
-                const IconComponent = el.icon;
+                const IconComponent = Icons[el.icon];
                 return (
                   <SelectItem key={index} value={el.label} className="m-auto">
                     <IconComponent
-                      style={{ color: selectedColor }}
+                      style={{ color:selectedColor }}
                       className="w-5 h-5"
                     />
                   </SelectItem>

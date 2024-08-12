@@ -1,4 +1,5 @@
 "use client";
+import * as Icons from "react-icons/fa";
 // import from default
 import * as React from "react";
 import axios from "axios";
@@ -31,8 +32,23 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 // import from component
 import AddCategory123 from "./AddCategory123";
-import { IconCategory } from "@/components/Icon-category";
+
+import { CategoryContext } from "@/components/CategoryContext";
+import { IconCategory } from "./Icon-category";
+
 export default function AddRecord() {
+  const {
+    createCategory,
+    categories,
+    setCategories,
+    categoryName,
+    setCategoryName,
+    iconName,
+    setIconName,
+    selectedColor,
+    setSelectedColor,
+  } = useContext(CategoryContext);
+  // console.log(categories);
   return (
     <>
       <Dialog>
@@ -57,9 +73,9 @@ export default function AddRecord() {
                   type="number"
                   placeholder="₮ 000.00"
                   className="col-span-4 p-2 border rounded-lg"
-                  onChange={(event) => {
-                    setAmount(event.target.value);
-                  }}
+                  // onChange={(event) => {
+                  //   setAmount(event.target.value);
+                  // }}
                 />
               </div>
               <div className="grid items-center grid-cols-1 gap-4">
@@ -78,6 +94,37 @@ export default function AddRecord() {
                             <AddCategory123 />
                           </button>
                         </SelectLabel>
+
+                        {/*  Mapping Categories */}
+                        <div className="flex">
+
+        
+            {/* Энд сонгогдсон icon-ийг гаргаж ирэх */}
+            <IconCategory/>
+
+            <div className="items-center gap-4 px-4">
+              {categories.map((item, index) => {
+                // const Icon = Icons[item.iconName];
+
+                return (
+                  <SelectItem key={index} value={item.categoryName}>
+                  <div className="flex">
+                    <div
+                      className="text-[#1F2937] text-center font-light text-base pr-7"
+                    >
+                      {/* <Icon style={{ item:selectedColor }} className="w-5 h-5"/> */}
+                      {item.categoryName}
+                    </div>
+                  </div>
+
+                  </SelectItem>
+                );
+              })}
+            </div>
+
+                        </div>
+
+
                       </SelectGroup>
                     </SelectContent>
                   </Select>

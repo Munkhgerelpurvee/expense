@@ -35,30 +35,30 @@ import {
 } from "@/components/ui/select";
 
 // import from component & CONTEXT
-import { IconCategory } from "@/components/Icon-category";
-import { CategoryContext } from "@/components/CategoryContext";
+
+import { CategoryContext } from "./CategoryContext";
 import Categories from "./Categories";
 
-export default function AddCategory123({ IconCat, setIconCat }) {
+export default function AddCategory123({IconCat,setIconCat}) {
   // const { categoryInfo, setCategoryInfo, createCategory } =
   //   useContext(CategoryContext);
   // log hiihed console deer orj irj bna
   //   console.log(CategoryInfo);
 
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
-  // const {
-  //   CategoryInfo,
-  //   setCategoryInfo,
-  //   createCategory,
-  //   categories,
-  //   setCategories,
-  //   categoryName,
-  //   setCategoryName,
-  //   iconName,
-  //   setIconName,
-  //   color,
-  //   setColor,
-  // } = useContext(CategoryContext);
+  const {
+    CategoryInfo,
+    setCategoryInfo,
+    createCategory,
+    categories,
+    setCategories,
+    categoryName,
+    setCategoryName,
+    iconName,
+    setIconName,
+    selectedColor,
+    setSelectedColor,
+  } = useContext(CategoryContext);
   //Category орж ирж байгаа эсэхийг байнга log хийж шалгах
   console.log("-AddCategory123- Res.Data --", Categories);
 
@@ -77,7 +77,7 @@ export default function AddCategory123({ IconCat, setIconCat }) {
               <DialogTitle>Add Category with icon & color</DialogTitle>
             </DialogHeader>
             <div className="flex justify-center gap-4 ">
-              <IconCategory />
+            <IconCategoty/>
               <div className="flex items-center gap-4">
                 <Input
                   id="name"

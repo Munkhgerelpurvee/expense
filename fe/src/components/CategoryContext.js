@@ -11,11 +11,11 @@ export const CategoryContextProvider = ({ children }) => {
   // Ямар утга явуулахаа зарлаж өгнө
   const [categoryInfo, setCategoryInfo] = useState([]);
 
-  // //  State зарлах
+  // Ямар утга явуулахаа State-ээр зарлаж өгнө State зарлах
   const [categories, setCategories] = useState([]);
   const [iconName, setIconName] = useState("");
   const [categoryName, setCategoryName] = useState("");
-  const [color, setColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
 
   // newCategory  үүсгэх
   const createCategory = async () => {
@@ -23,7 +23,7 @@ export const CategoryContextProvider = ({ children }) => {
       const newCategory = {
         categoryName,
         iconName,
-        color,
+        selectedColor,
       };
       //  Context-n newCategory орж ирж байгаа эсэхийг байнга log хийж шалгах
       console.log("-CategoryContext- Res.Data --", newCategory);
@@ -53,8 +53,8 @@ export const CategoryContextProvider = ({ children }) => {
         iconName,
         setIconName,
 
-        color,
-        setColor,
+        selectedColor,
+        setSelectedColor,
       }}
     >
       {children}

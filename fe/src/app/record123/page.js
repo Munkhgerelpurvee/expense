@@ -53,8 +53,8 @@ export default function Record123({}) {
     setCategoryName,
     iconName,
     setIconName,
-    color,
-    setColor,
+    selectedColor,
+    setSelectedColor,
   } = useContext(CategoryContext);
   // console.log(categories);
   // log hiihed console deer orj irj bna
@@ -167,7 +167,7 @@ export default function Record123({}) {
                   </DialogHeader>
                   <div className="flex justify-center gap-4 ">
                     <IconCategory IconCat={iconName} setIconCat={setIconName} />
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 ">
                       <Input
                         id="name"
                         value={categoryName}
