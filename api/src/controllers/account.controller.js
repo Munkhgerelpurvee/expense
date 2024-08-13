@@ -39,15 +39,19 @@ const createAccount = async (req, res, next) => {
 };
 
 //200ok
-const getAccount = async (req, res, next) => {
+const getAccountById = async (req, res, next) => {
   try {
     const filePath = path.join(__dirname, "..", "data", "accounts.json");
     const rawData = fs.readFileSync(filePath);
     const accounts = JSON.parse(rawData);
 
     const id = req.params.id;
-    const data = accounts.find((el) => el.id === id);
-    res.json(data);
+    const account = accounts.find((el) => el.id === id);
+    if (account) {
+      res.json(account);
+    } else {
+      res.status(404).json({ error: "Account not found" });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
@@ -93,7 +97,7 @@ const deleteAccount = async (req, res, next) => {
 module.exports = {
   getAllAccounts,
   createAccount,
-  getAccount,
+  getAccountById,
   updateAccount,
   deleteAccount,
 };

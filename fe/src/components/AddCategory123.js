@@ -37,9 +37,10 @@ import {
 // import from component & CONTEXT
 
 import { CategoryContext } from "./CategoryContext";
-import Categories from "./Categories";
 
-export default function AddCategory123({IconCat,setIconCat}) {
+import { IconCategory } from "./Icon-category";
+
+export default function AddCategory123() {
   // const { categoryInfo, setCategoryInfo, createCategory } =
   //   useContext(CategoryContext);
   // log hiihed console deer orj irj bna
@@ -47,8 +48,6 @@ export default function AddCategory123({IconCat,setIconCat}) {
 
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
   const {
-    CategoryInfo,
-    setCategoryInfo,
     createCategory,
     categories,
     setCategories,
@@ -60,7 +59,7 @@ export default function AddCategory123({IconCat,setIconCat}) {
     setSelectedColor,
   } = useContext(CategoryContext);
   //Category орж ирж байгаа эсэхийг байнга log хийж шалгах
-  console.log("-AddCategory123- Res.Data --", Categories);
+  // console.log("-AddCategory123- Res.Data --", Categories);
 
   return (
     <>
@@ -77,7 +76,7 @@ export default function AddCategory123({IconCat,setIconCat}) {
               <DialogTitle>Add Category with icon & color</DialogTitle>
             </DialogHeader>
             <div className="flex justify-center gap-4 ">
-            <IconCategoty/>
+              <IconCategory IconCat={iconName} setIconCat={setIconName} />
               <div className="flex items-center gap-4">
                 <Input
                   id="name"

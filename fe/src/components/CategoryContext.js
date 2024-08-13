@@ -8,11 +8,20 @@ export const CategoryContext = createContext(null);
 
 // categoryContext- iig Provider hiih component hiine
 export const CategoryContextProvider = ({ children }) => {
-  // Ямар утга явуулахаа зарлаж өгнө
-  const [categoryInfo, setCategoryInfo] = useState([]);
-
-  // Ямар утга явуулахаа State-ээр зарлаж өгнө State зарлах
+  // Ямар утга явуулахаа State-ээр зарлаж өгнө
   const [categories, setCategories] = useState([]);
+
+  // // All Category авах
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get("http://localhost:3001/api/categories");
+      setCategories(response.data);
+      console.log("-CategoryContext-All Data here- Res.Data --", response.data);
+    };
+    getData();
+  }, []);
+
+  // Ямар утга явуулахаа State-ээр зарлаж өгнө
   const [iconName, setIconName] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -43,8 +52,6 @@ export const CategoryContextProvider = ({ children }) => {
     // value prop дамжуулах
     <CategoryContext.Provider
       value={{
-        categoryInfo,
-        setCategoryInfo,
         createCategory,
         categories,
         setCategories,

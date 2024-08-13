@@ -1,5 +1,5 @@
 "use client";
-import * as Icons from "react-icons/fa";
+import * as Icons from "lucide-react";
 // import from default
 import * as React from "react";
 import axios from "axios";
@@ -32,11 +32,9 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 // import from component
 import AddCategory123 from "./AddCategory123";
-
 import { CategoryContext } from "@/components/CategoryContext";
-import { IconCategory } from "./Icon-category";
 
-export default function AddRecord() {
+export default function AddRecord({ text }) {
   const {
     createCategory,
     categories,
@@ -54,7 +52,7 @@ export default function AddRecord() {
       <Dialog>
         <DialogTrigger asChild>
           <Button className="bg-[#0166FF] text-[#fff] font-extralight text-base px-28 rounded-full">
-            + Add to AddCategory
+            {text}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[925px]">
@@ -97,34 +95,33 @@ export default function AddRecord() {
 
                         {/*  Mapping Categories */}
                         <div className="flex">
+                          {/* Энд сонгогдсон icon-ийг гаргаж ирэх */}
 
-        
-            {/* Энд сонгогдсон icon-ийг гаргаж ирэх */}
-            <IconCategory/>
+                          <div className="items-center gap-4 px-4">
+                            {categories.map((item, index) => {
+                              const Icon = Icons[item.iconName];
 
-            <div className="items-center gap-4 px-4">
-              {categories.map((item, index) => {
-                // const Icon = Icons[item.iconName];
-
-                return (
-                  <SelectItem key={index} value={item.categoryName}>
-                  <div className="flex">
-                    <div
-                      className="text-[#1F2937] text-center font-light text-base pr-7"
-                    >
-                      {/* <Icon style={{ item:selectedColor }} className="w-5 h-5"/> */}
-                      {item.categoryName}
-                    </div>
-                  </div>
-
-                  </SelectItem>
-                );
-              })}
-            </div>
-
+                              return (
+                                <SelectItem
+                                  key={index}
+                                  value={item.categoryName}
+                                >
+                                  <div className="flex gap-4">
+                                    <div className="">
+                                      <Icon
+                                        style={{ color: item.selectedColor }}
+                                        className="w-5 h-5"
+                                      />
+                                    </div>
+                                    <p className="text-[#1F2937] text-center font-light text-base px-4">
+                                      {item.categoryName}
+                                    </p>
+                                  </div>
+                                </SelectItem>
+                              );
+                            })}
+                          </div>
                         </div>
-
-
                       </SelectGroup>
                     </SelectContent>
                   </Select>

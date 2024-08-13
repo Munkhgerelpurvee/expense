@@ -2,7 +2,7 @@ const { Router } = require("express");
 // contollers -c import hiine
 const {
   getAllAccounts,
-  getAccount,
+  getAccountById,
   createAccount,
   updateAccount,
   deleteAccount,
@@ -15,7 +15,7 @@ const accountRouter = Router();
 accountRouter
   .get("/", getAllAccounts)
   .post("/", createAccount)
-  .get("/:id", getAccount)
+  .get("/:id", getAccountById)
   .put("/:id", updateAccount)
   .delete("/:id", deleteAccount);
 

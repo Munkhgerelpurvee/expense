@@ -1,5 +1,6 @@
 "use-client";
-import * as Icons from "react-icons/fa";
+import * as Icons from "lucide-react";
+
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { CategoryContext } from "./CategoryContext";
@@ -52,7 +53,6 @@ import { PiToiletPaperFill } from "react-icons/pi";
 import { PiPencilLineFill } from "react-icons/pi";
 import { HiOutlinePhoneArrowDownLeft } from "react-icons/hi2";
 
-
 // const iconDatas = [
 //   { icon: IoGift, label: "IoGift" },
 //   { icon: PiForkKnifeDuotone, label: "PiForkKnifeDuotone" },
@@ -93,10 +93,10 @@ import { HiOutlinePhoneArrowDownLeft } from "react-icons/hi2";
 // ];
 
 const iconDatas = [
-  { icon:"IoGift" },
-  { icon:"PiForkKnifeDuotone" },
-  { icon:"PiWineFill" }];
-
+  { icon: "House" },
+  { icon: "Apple" },
+  { icon: "BaggageClaim" },
+];
 
 const colors = [
   "#23E01F",
@@ -110,16 +110,10 @@ const colors = [
 
 // by new method:
 
-
 export const IconCategory = ({ IconCat, setIconCat }) => {
-
-
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
 
-  const {
-    selectedColor,
-    setSelectedColor,
-  } = useContext(CategoryContext);
+  const { selectedColor, setSelectedColor } = useContext(CategoryContext);
   // console.log("-Icon-Category.js- Res.Data --", categories);
 
   return (
@@ -132,19 +126,19 @@ export const IconCategory = ({ IconCat, setIconCat }) => {
       // }
     >
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder={<FaHouse />} />
+        {/* <SelectValue placeholder={<Apple />} /> */}
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <div className="flex flex-col gap-10">
             <div className="grid grid-cols-6 w-[450px] h-[250px] mb-4">
               {/* <SelectLabel>Icons</SelectLabel> */}
-              {iconDatas.map((el, index) => {
+              {iconDatas?.map((el, index) => {
                 const IconComponent = Icons[el.icon];
                 return (
-                  <SelectItem key={index} value={el.label} className="m-auto">
+                  <SelectItem key={index} value={el.icon} className="m-auto">
                     <IconComponent
-                      style={{ color:selectedColor }}
+                      style={{ color: selectedColor }}
                       className="w-5 h-5"
                     />
                   </SelectItem>
