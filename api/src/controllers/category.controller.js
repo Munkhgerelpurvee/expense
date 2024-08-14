@@ -45,6 +45,7 @@ const getCategory = async (req, res, next) => {
     const categories = JSON.parse(rawData);
 
     const id = req.params.id;
+    console.log(id);
     const data = categories.find((el) => el.id === id);
     res.json(data);
   } catch (error) {

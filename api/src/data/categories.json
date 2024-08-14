@@ -1,1 +1,32 @@
-[{"categoryName":"apple","iconName":"Apple","selectedColor":"#3ABEF7","id":"1ee3a65e-984b-46aa-8c2c-c56c35b315e2"},{"categoryName":"lllll","iconName":"House","selectedColor":"#EC4899","id":"beeb3550-a875-4dff-b9a1-a18f1e3ca1f2"},{"categoryName":"choosed red apple","iconName":"Apple","selectedColor":"#F54949","id":"a3f4b0eb-80ff-4191-9a8e-25af6f05c5e3"},{"categoryName":"pink apple","iconName":"Apple","selectedColor":"#EC4899","id":"35398b8d-08b6-43ab-808e-257b6204bf53"}]
+[
+  {
+    "categoryName": "apple",
+    "iconName": "Apple",
+    "selectedColor": "#3ABEF7",
+    "id": "1ee3a65e-984b-46aa-8c2c-c56c35b315e2"
+  },
+  {
+    "categoryName": "lllll",
+    "iconName": "House",
+    "selectedColor": "#EC4899",
+    "id": "beeb3550-a875-4dff-b9a1-a18f1e3ca1f2"
+  },
+  {
+    "categoryName": "choosed red apple",
+    "iconName": "Apple",
+    "selectedColor": "#F54949",
+    "id": "a3f4b0eb-80ff-4191-9a8e-25af6f05c5e3"
+  },
+  {
+    "categoryName": "pink apple",
+    "iconName": "Apple",
+    "selectedColor": "#EC4899",
+    "id": "35398b8d-08b6-43ab-808e-257b6204bf53"
+  },
+  {
+    "categoryName": "tereg",
+    "iconName": "BaggageClaim",
+    "selectedColor": "#3ABEF7",
+    "id": "13da7bbc-30ca-4fbd-8bcd-bb1ebae48c7f"
+  }
+]

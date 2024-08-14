@@ -16,7 +16,7 @@ export const CategoryContextProvider = ({ children }) => {
     const getData = async () => {
       const response = await axios.get("http://localhost:3001/api/categories");
       setCategories(response.data);
-      console.log("-CategoryContext-All Data here- Res.Data --", response.data);
+      // console.log("-CategoryContext-All Data here- Res.Data --", response.data);
     };
     getData();
   }, []);

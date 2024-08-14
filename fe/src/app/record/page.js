@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import Categories from "../../components/Categories";
 import Food from "../../components/Food";
 import Image from "next/image";
-
+import * as Icons from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -65,6 +65,8 @@ import { BsFillTaxiFrontFill } from "react-icons/bs";
 import { PiTShirtFill } from "react-icons/pi";
 import { DivideCircleIcon, LogIn } from "lucide-react";
 import { IconCategory } from "@/components/Icon-category";
+import { useContext } from "react";
+import { CategoryContext } from "@/components/CategoryContext";
 
 export default function Record({ categoryIcon, setCategoryIcon }) {
   // This is backEnd data
@@ -77,7 +79,7 @@ export default function Record({ categoryIcon, setCategoryIcon }) {
     taxi: BsFillTaxiFrontFill,
     shopping: PiTShirtFill,
   };
-
+  const { categories } = useContext(CategoryContext);
   const categoryData = [
     {
       img: "home",
@@ -114,6 +116,7 @@ export default function Record({ categoryIcon, setCategoryIcon }) {
   const [accounts, setAccounts] = useState([]);
   const [amount, setAmount] = useState();
   const [title, setTitle] = useState();
+  const [categoryId, setCategoryId] = useState();
 
   useEffect(() => {
     const getData = async () => {
@@ -143,13 +146,13 @@ export default function Record({ categoryIcon, setCategoryIcon }) {
   };
 
   // All Category авах
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState();
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get("http://localhost:3001/api/categories");
-      setCategories(response.data);
+      setCategory(response.data);
       console.log(response.data);
     };
     getData();
@@ -171,7 +174,7 @@ export default function Record({ categoryIcon, setCategoryIcon }) {
       newCategory
     );
 
-    setCategories([...categories, response.data]);
+    // setCategories([...categories, response.data]);
   };
 
   return (
@@ -254,7 +257,10 @@ export default function Record({ categoryIcon, setCategoryIcon }) {
                     {/*right now do this  */}
                     <div className="grid items-center grid-cols-1 gap-4">
                       <div className="mt-3">
-                        <Select className="">
+                        <Select
+                          onValueChange={(value) => setCategoryId(value)}
+                          className=""
+                        >
                           <Label
                             className="text-[gray] font-light "
                             htmlFor="r1"
@@ -273,18 +279,18 @@ export default function Record({ categoryIcon, setCategoryIcon }) {
                                 </button>
                               </SelectLabel>
 
-                              {categoryData.map((el, index) => {
-                                const IconComponent = iconData[el.img];
+                              {categories?.map((el, index) => {
+                                const IconComponent = Icons[el.iconName];
 
                                 return (
-                                  <SelectItem key={index} value={el.name}>
+                                  <SelectItem key={index} value={el.id}>
                                     <div className="flex items-center gap-4">
                                       <IconComponent
-                                        color={el.color}
+                                        color={el.selectedColor}
                                         className="w-5 h-5"
                                       />
 
-                                      <p>{el.name}</p>
+                                      <p>{el.categoryName}</p>
                                     </div>
                                   </SelectItem>
                                 );

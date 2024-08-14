@@ -15,13 +15,13 @@ export const AccountContextProvider = ({ children }) => {
   const getAccounts = async () => {
     const response = await axios.get("http://localhost:3001/api/accounts");
     setAllAccounts(response.data);
-    console.log("-AccountContext-All Data here- Res.Data --", response.data);
+    // console.log("-AccountContext-All Data here- Res.Data --", response.data);
   };
   useEffect(() => {
     getAccounts();
   }, []);
 
-  console.log(allAccounts);
+  // console.log(allAccounts);
 
   // newAccout үүсгэх
   const createAccount = async () => {

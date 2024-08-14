@@ -3,22 +3,22 @@
     "title": "shopping",
     "amount": "90000",
     "id": "6c44b5be-4e8f-4758-a8b0-6e6dcd0f4bc5",
+    "categoryId": "beeb3550-a875-4dff-b9a1-a18f1e3ca1f2",
     "user": "req.userId"
   },
-
   {
-    "title": "carColor",
-    "amount": "900",
-    "id": "bedc5c19-6cb5-4750-9272-9c3b44019fab"
+    "title": "trtrttr",
+    "amount": "999",
+    "id": "81c73a17-6e17-410d-b91b-5be68862c778"
   },
   {
-    "title": "талх",
-    "amount": "3200",
-    "id": "ff51eb53-7e78-41cd-84bd-f8dce3fd0f55"
+    "title": "now saving ",
+    "amount": "1099",
+    "id": "98809a26-f51f-40da-bdc2-b046f1423b2e"
   },
   {
-    "title": "apple",
-    "amount": "3900",
-    "id": "5ed4dfe6-16c4-4a9e-acc5-7d4849d16ab5"
+    "title": "now saving ",
+    "amount": "1099",
+    "id": "17c6af32-66ab-4c5d-aadb-1ca1b104f7b7"
   }
 ]
