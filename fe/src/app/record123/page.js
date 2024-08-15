@@ -1,11 +1,10 @@
 "use client";
 // import from default
+import * as Icons from "lucide-react";
 import * as React from "react";
 import axios from "axios";
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 // import from ui
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import {
   Dialog,
   DialogContent,
@@ -24,16 +23,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 // import from component
 import { Accounts } from "../../components/Accounts";
@@ -43,6 +32,11 @@ import AddRecord from "@/components/AddRecord";
 import { CategoryContext } from "@/components/CategoryContext";
 
 export default function Record123({}) {
+  const [value, setValue] = useState({
+    min: 0,
+    max: 100000,
+    selectedValue: 100000,
+  });
   // CategoryContext-c ашиглах value-гаа оруулж ирнэ.
   const {
     createCategory,
@@ -108,7 +102,7 @@ export default function Record123({}) {
           <div className="flex-2 bg-[#E5E7EB] text-[#1F2937] rounded-lg">
             <div className="flex flex-col gap-4 p-4">
               <p className="text-2xl font-semibold text-[#000]">Records</p>
-
+              {/* Энд sidebar-н Add Record - n Dialog гарч ирдэг хэсэг */}
               <AddRecord text="+ Add" />
             </div>
           </div>
@@ -182,7 +176,7 @@ export default function Record123({}) {
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="text-[#1F2937] hover:text-[#fff] bg-[#E5E7EB] font-normal  text-base rounded-full mt-6">
-                    + Add Category with eye
+                    + Add Category TO SIDEBAR
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
@@ -204,14 +198,44 @@ export default function Record123({}) {
                       />
                     </div>
                   </div>
+
                   <DialogFooter>
                     <Button
                       onClick={createCategory}
                       className="bg-[#16A34A] min-w-full"
                       type="submit"
                     >
-                      Save changes to eye
+                      Save changes TO SIDEBAR
                     </Button>
+
+                    <div className="space-y-4">
+                      <p className="font-semibold">Amount Range</p>
+                      <div className="flex *:h-12 gap-4">
+                        <Input
+                          onChange={(e) =>
+                            setValue({ ...value, min: e.target.value })
+                          }
+                        />
+                        <Input
+                          onChange={(e) =>
+                            setValue({ ...value, max: e.target.value })
+                          }
+                        />
+                      </div>
+                      <div className="h-12 space-y-2">
+                        <Slider
+                          onValueChange={(v) => console.log(v)}
+                          defaultValue={[value.selectedValue]}
+                          min={value.min}
+                          max={value.max}
+                          step={100}
+                        />
+                        <div className="flex justify-between">
+                          <p>{value.min}</p>
+                          <p>{value.max}</p>
+                        </div>
+                      </div>
+                    </div>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>

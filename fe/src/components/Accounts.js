@@ -7,15 +7,15 @@ import { AccountTransitionCheckbox } from "./AccountTransitionCheckbox";
 //
 import { AccountContext } from "@/components/AccountContext";
 export const Accounts = () => {
-  const { allAccounts } = useContext(AccountContext);
+  const { accounts } = useContext(AccountContext);
   return (
     <>
-      <main>Hello accounts</main>
+      <main></main>
       <div>
-        <div className="flex-1 bg-[#D1D5DB] border-gray-300 px-10 py-10">
+        <div className="flex-1 bg-[#D1D5DB] border-gray-300 px-10 py-10 mb-4">
           Last 30 Days
-          <div className="flex justify-between bg-[#fff] rounded-lg p-2 mb-4">
-            <div className="flex items-center gap-4">
+          <div className="flex justify-between bg-[#fff] rounded-lg p-2 ">
+            <div className="flex items-center gap-4 ">
               <Checkbox />
               <Label className="text-[gray] font-light" htmlFor="r1">
                 Select all
@@ -25,7 +25,7 @@ export const Accounts = () => {
           <h1 className="mb-4 text-[#1F2937] text-base font-semibold">Today</h1>
           {/* Backend mapping */}
           <div className="mb-10">
-            {allAccounts.map((accountEl, index) => {
+            {accounts.map((accountEl, index) => {
               return (
                 <AccountTransitionCheckbox
                   key={index}

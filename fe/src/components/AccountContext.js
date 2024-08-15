@@ -8,13 +8,21 @@ export const AccountContext = createContext(null);
 // AccountContext- iig Provider hiih component hiine
 export const AccountContextProvider = ({ children }) => {
   // Ямар утга явуулахаа State-ээр зарлаж өгнө
-  const [allAccounts, setAllAccounts] = useState([]);
+  const [accounts, setAccounts] = useState([]);
   const [amount, setAmount] = useState();
+  const [categoryId, setCategoryId] = useState("");
+  const [newAccount, setNewAccount] = useState({
+    type: "EXP",
+    date: "",
+    time: "",
+    payee: "",
+    note: "",
+  });
 
   // All Account авах
   const getAccounts = async () => {
     const response = await axios.get("http://localhost:3001/api/accounts");
-    setAllAccounts(response.data);
+    setAccounts(response.data);
     // console.log("-AccountContext-All Data here- Res.Data --", response.data);
   };
   useEffect(() => {
@@ -27,6 +35,7 @@ export const AccountContextProvider = ({ children }) => {
   const createAccount = async () => {
     const newAccount = {
       amount,
+      categoryId,
       record_id: v4(),
     };
     // newAccout орж ирж байгаа эсэхийг байнга log хийж шалгах
@@ -37,7 +46,7 @@ export const AccountContextProvider = ({ children }) => {
       newAccount
     );
 
-    setAllAccounts([...accounts, response.data]);
+    setAccounts([...accounts, response.data]);
   };
   return (
     // value prop дамжуулах
@@ -45,9 +54,14 @@ export const AccountContextProvider = ({ children }) => {
       value={{
         getAccounts,
         createAccount,
-        allAccounts,
-        setAllAccounts,
+        accounts,
+        setAccounts,
         amount,
+        setAmount,
+        newAccount,
+        setNewAccount,
+        categoryId,
+        setCategoryId,
       }}
     >
       {children}

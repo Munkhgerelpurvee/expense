@@ -8,7 +8,7 @@ import axios from "axios";
 
 //
 export const AccountTransitionCheckbox = ({ accountTrans }) => {
-  console.log(accountTrans, "==");
+  console.log(accountTrans, "==accountTrans==");
   const [categoryData, setCategoryData] = useState({});
   // `http://localhost:3001/api/categories/${accountTrans.categoryId}`
   const getCategory = async () => {
@@ -35,7 +35,7 @@ export const AccountTransitionCheckbox = ({ accountTrans }) => {
           {IconComponent && <IconComponent color="white" size={20} />}
         </div>
         <Label className="text-[gray] font-light" htmlFor="r1">
-          Food & Drinks
+          {categoryData.categoryName}
         </Label>
       </div>
       <div className="flex items-center">

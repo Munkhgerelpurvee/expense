@@ -8,7 +8,18 @@ import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 // import from ui
+
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Dialog,
   DialogContent,
@@ -33,6 +44,7 @@ import { Textarea } from "@/components/ui/textarea";
 // import from component
 import AddCategory123 from "./AddCategory123";
 import { CategoryContext } from "@/components/CategoryContext";
+import { AccountContext } from "./AccountContext";
 
 export default function AddRecord({ text }) {
   const {
@@ -47,6 +59,24 @@ export default function AddRecord({ text }) {
     setSelectedColor,
   } = useContext(CategoryContext);
   // console.log(categories);
+
+  // AccountContext-g oiruulj irne
+  const {
+    getAccounts,
+    createAccount,
+    accounts,
+    setAccounts,
+    amount,
+    setAmount,
+    categoryId,
+    setCategoryId,
+    newAccount,
+    setNewAccount,
+  } = useContext(AccountContext);
+
+  //
+  // const [categoryId, setCategoryId] = useState();
+
   return (
     <>
       <Dialog>
@@ -62,23 +92,44 @@ export default function AddRecord({ text }) {
 
           <div className="flex gap-4 py-4">
             <div className="flex flex-1 flex-col border border-solid rounded-lg border-[yellow] p-4">
+              <div className="flex gap-6">
+                <Tabs defaultValue="account" className="w-[400px]">
+                  <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger
+                      className="bg-[#0166FF] rounded-full "
+                      value="account"
+                    >
+                      Expense
+                    </TabsTrigger>
+                    <TabsTrigger
+                      className="rounded-full bg-[#E5E7EB] text-[#1F2937] hover:text-[#fff]"
+                      value="password"
+                    >
+                      Income
+                    </TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
               <div className="grid items-center grid-cols-1 gap-4 mt-4">
                 <Label className="text-[gray] font-light" htmlFor="r1">
                   Amount
                 </Label>
                 <Input
-                  value=""
+                  value={amount}
                   type="number"
                   placeholder="₮ 000.00"
                   className="col-span-4 p-2 border rounded-lg"
-                  // onChange={(event) => {
-                  //   setAmount(event.target.value);
-                  // }}
+                  onChange={(event) => {
+                    setAmount(event.target.value);
+                  }}
                 />
               </div>
               <div className="grid items-center grid-cols-1 gap-4">
                 <div className="mt-3">
-                  <Select className="">
+                  <Select
+                    onValueChange={(value) => setCategoryId(value)}
+                    className=""
+                  >
                     <Label className="text-[gray] font-light " htmlFor="r1">
                       Category
                     </Label>
@@ -101,16 +152,15 @@ export default function AddRecord({ text }) {
                             {categories.map((item, index) => {
                               const Icon = Icons[item.iconName];
 
+                              // console.log("NAMES", item.iconName);
+
                               return (
-                                <SelectItem
-                                  key={index}
-                                  value={item.categoryName}
-                                >
+                                <SelectItem key={index} value={item.id}>
                                   <div className="flex gap-4">
                                     <div className="">
                                       <Icon
                                         style={{ color: item.selectedColor }}
-                                        className="w-5 h-5"
+                                        // className="w-3 h-3"
                                       />
                                     </div>
                                     <p className="text-[#1F2937] text-center font-light text-base px-4">
@@ -128,10 +178,11 @@ export default function AddRecord({ text }) {
 
                   <DialogFooter className="">
                     <Button
+                      onClick={createAccount}
                       className="bg-[#0166FF] w-full rounded-full mt-10"
                       type="submit"
                     >
-                      Add Record to amount & category
+                      Add Record to category
                     </Button>
                   </DialogFooter>
                 </div>

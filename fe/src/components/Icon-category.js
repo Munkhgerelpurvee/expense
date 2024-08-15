@@ -139,7 +139,7 @@ export const IconCategory = ({ IconCat, setIconCat }) => {
                   <SelectItem key={index} value={el.icon} className="m-auto">
                     <IconComponent
                       style={{ color: selectedColor }}
-                      className="w-5 h-5"
+                      // className="w-3 h-3"
                     />
                   </SelectItem>
                 );
