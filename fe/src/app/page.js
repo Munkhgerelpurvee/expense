@@ -9,6 +9,7 @@ import { useState, useEffect, useContext } from "react";
 import { Container } from "../components/Container";
 import axios from "axios";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -48,6 +49,7 @@ export default function Home() {
 
   return (
     <>
+      <Navbar />
       <div className="flex justify-center gap-4 m-4">
         <Button className="bg-[#0166FF] font-normal text-base">+ Record</Button>
         <Avatar>
@@ -83,7 +85,7 @@ export default function Home() {
                 id="firstName"
                 type="text"
                 placeholder="Write your name"
-                className="col-span-4 p-8 border rounded-lg"
+                className="col-span-4 p-2 border rounded-lg"
                 onChange={(event) => {
                   setUserInfo({ ...userInfo, firstName: event.target.value });
                 }}
@@ -97,7 +99,7 @@ export default function Home() {
                 id="lastName"
                 type="text"
                 placeholder="Write your lastName"
-                className="col-span-4 p-8 border rounded-lg"
+                className="col-span-4 p-2 border rounded-lg"
                 onChange={(event) => {
                   setUserInfo({ ...userInfo, lastName: event.target.value });
                 }}

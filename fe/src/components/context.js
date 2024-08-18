@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, createContext } from "react";
-
 // эхлээд user-ийн мэдээлэл хадгалах context үүсгэнэ
 export const UserContext = createContext(null);
 

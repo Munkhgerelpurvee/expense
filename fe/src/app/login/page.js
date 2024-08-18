@@ -5,7 +5,6 @@ import { useContext } from "react";
 
 export default function Login() {
   // useContext дээр ашиглах value-гаа оруулж ирнэ.
-
   const { userInfo } = useContext(UserContext);
   console.log(userInfo);
 

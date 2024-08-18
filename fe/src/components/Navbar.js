@@ -29,11 +29,16 @@ export default function Navbar() {
               Record123
             </p>
           </Link>
-          <Link href="/record456">
-            <p className=" text-[#0F172A] text-base font-semibold ">
-              Record456
-            </p>
+          <Link href="/Log-in">
+          <Image
+            src="/images/Vector.svg"
+            alt="Vecvor Logo"
+            className="dark:invert"
+            width={27}
+            height={27}
+          />
           </Link>
+     
         </div>
 
         <div className="flex gap-4 ">
