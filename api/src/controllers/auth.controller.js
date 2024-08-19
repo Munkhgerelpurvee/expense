@@ -1,8 +1,13 @@
 const { readJson, saveJson } = require("../utils");
 const jwt = require("jsonwebtoken");
 const { v4 } = require("uuid");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const login = async (req, res) => {
+  console.log(process.env.JWT_SECRET, "env====");
+
   const { email, password } = req.body;
   const users = readJson("users.json");
 

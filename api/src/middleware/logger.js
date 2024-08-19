@@ -1,8 +1,8 @@
-const logger = (req,res,next) => {
-  req.userId = "239";
-  
-    console.log(`${req.method} ${req.method} ://${req.host} ${req.originalUrl}`);
-    next();
-  };
+// const logger = (req,res,next) => {
+//   req.userId = "239";
 
-  module.exports = logger;
+//     console.log(`${req.method} ${req.method} ://${req.host} ${req.originalUrl}`);
+//     next();
+//   };
+
+//   module.exports = logger;

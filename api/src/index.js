@@ -1,22 +1,23 @@
 const dotenv = require("dotenv");
 
 dotenv.config();
+
 const express = require("express");
 const cors = require("cors");
-const logger = require("./middleware/logger");
+// const logger = require("./middleware/logger");
 // Router оруулж ирэх
 const { accountRouter } = require("./routes/account.route");
 const { categoryRouter } = require("./routes/category.route");
-// 
+//
 const { authRouter } = require("./routes/auth.route");
 const { userRouter } = require("./routes/user.route");
-const { authMiddleware } = require("./middleware/auth.middleware");
+// const { authMiddleware } = require("./middleware/auth.middleware");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(authMiddleware);
+// app.use(authMiddleware);
 
 const port = 3001;
 app.get("/", (req, res) => {
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 // use  функцийг ашиглан төрөл бүрийн Express-н midlleware-ийг холбодог.
-app.use(logger);
+// app.use(logger);
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
 app.use("/api/accounts", accountRouter);
