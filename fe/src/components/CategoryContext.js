@@ -13,8 +13,14 @@ export const CategoryContextProvider = ({ children }) => {
 
   // // All Category авах
   useEffect(() => {
+    const token = localStorage.getItem("token");
     const getData = async () => {
-      const response = await axios.get("http://localhost:3001/api/categories");
+      const response = await axios.get("http://localhost:3001/api/categories", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      });
       setCategories(response.data);
       // console.log("-CategoryContext-All Data here- Res.Data --", response.data);
     };

@@ -43,7 +43,7 @@ export default function Home() {
     setAccounts([...accounts, response.data]);
   };
 
-  // useContext дээр ашиглах value-гаа оруулж ирнэ.
+  // userContext дээр ашиглах value-гаа оруулж ирнэ.
   const { userInfo, setUserInfo } = useContext(UserContext);
   console.log(userInfo);
 
