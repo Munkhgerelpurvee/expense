@@ -5,7 +5,7 @@ import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 
 import { useAuth } from "@/components/AuthContext";
-import { useState,useContext, useEffect } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState("");

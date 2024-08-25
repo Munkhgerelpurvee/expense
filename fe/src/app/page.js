@@ -1,155 +1,84 @@
 "use client";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { UserContext } from "@/components/context";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { useState, useEffect, useContext } from "react";
 import { Container } from "../components/Container";
-import axios from "axios";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
+import { Navbar } from "../components/Navbar";
 
+
+// import { FaCircleArrowUp } from "react-icons/fa6";
+// import { FaCircleArrowDown } from "react-icons/fa6";
 export default function Home() {
-  const [data, setData] = useState([]);
-  const [accounts, setAccounts] = useState([]);
-  const [amount, setAmount] = useState();
-  const [title, setTitle] = useState();
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get("http://localhost:3001/api/accounts");
-      setAccounts(response.data);
-
-      // console.log(response.data);
-    };
-    getData();
-  }, []);
-
-  console.log(accounts);
-  //
-
-  const createAccount = async () => {
-    const newAccount = {
-      title,
-      amount,
-    };
-    const response = await axios.post(
-      "http://localhost:3001/api/accounts",
-      newAccount
-    );
-
-    setAccounts([...accounts, response.data]);
-  };
-
-  // userContext дээр ашиглах value-гаа оруулж ирнэ.
-  const { userInfo, setUserInfo } = useContext(UserContext);
-  console.log(userInfo);
-
   return (
     <>
       <Navbar />
-      <div className="flex justify-center gap-4 m-4">
-        <Button className="bg-[#0166FF] font-normal text-base">+ Record</Button>
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-      </div>
+   
       <Container>
-        <main className="flex items-center justify-between min-h-screen p-24">
-          <div className="ml-10 bg-yellow-400">
-            <h1 className="bg-pink-400">Account</h1>
-            <ul>
-              {accounts.map((account, index) => {
-                return (
-                  <li key={index}>
-                    {account.title}: {account.amount}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/*  useContext ашиглаж үзэх хэсэг */}
-
-          <div>
-            <p>Welcome to useContext</p>
-            <div className="grid items-center grid-cols-1 gap-4 mt-4">
-              <Label className="text-[gray] font-light" htmlFor="r1">
-                firstName
-              </Label>
-              <Input
-                name="firstName"
-                id="firstName"
-                type="text"
-                placeholder="Write your name"
-                className="col-span-4 p-2 border rounded-lg"
-                onChange={(event) => {
-                  setUserInfo({ ...userInfo, firstName: event.target.value });
-                }}
-              />
-
-              <Label className="text-[gray] font-light" htmlFor="r1">
-                lastName
-              </Label>
-              <Input
-                name="lastName"
-                id="lastName"
-                type="text"
-                placeholder="Write your lastName"
-                className="col-span-4 p-2 border rounded-lg"
-                onChange={(event) => {
-                  setUserInfo({ ...userInfo, lastName: event.target.value });
-                }}
-              />
-
-              <Link
-                href="/login"
-                className="p-1 mt-4 font-bold text-center bg-blue-600 rounded-full "
-              >
-                Login
-              </Link>
+    
+        <div className=" w-full h-full flex flex-col gap-6 pt-6">
+          <div className="w-full h-[220px] flex gap-6">
+            <div className="w-1/3 h-full bg-slate-500 rounded-2xl">
+              <img src="./images/Large.png" className="w-full h-full" />
+            </div>
+            <div className="w-1/3 h-full bg-white rounded-xl">
+              <div className="w-full h-[56px] p-4 flex justify-start gap-2 items-center border-b-2 border-[#E2E8F0]">
+                <div className="w-2 h-2 rounded-full bg-green-700"></div>
+                <h5>Your Income</h5>
+              </div>
+              <div className="w-full h-fit flex flex-col justify-start p-6 items-start gap-y-4">
+                <div className="w-full h-fit flex flex-col justify-start items-start">
+                  <div className="w-full h-fit flex justify-start items-center">
+                    <h4 className="text-4xl">1,200,000</h4>
+                    <h4 className="text-4xl"> T</h4>
+                  </div>
+                  <h6 className="text-lg font-normal text-[#64748B]">
+                    Your Income Amount
+                  </h6>
+                </div>
+                <div className="flex items-center justify-start gap-x-2">
+                  {/* <FaCircleArrowUp className="text-green-700" /> */}
+                  <div className="flex ">
+                    <h6 className="text-lg font-normal text-[#000000]">30</h6>
+                    <h6 className="text-lg font-normal text-[#000000]">
+                      % from last month
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-1/3 h-full bg-white rounded-xl">
+              <div className="w-full h-[56px] p-4 flex justify-start gap-2 items-center border-b-2 border-[#E2E8F0]">
+                <div className="w-2 h-2 rounded-full bg-red-700"></div>
+                <h5>Total Expenses</h5>
+              </div>
+              <div className="w-full h-fit flex flex-col justify-start p-6 items-start gap-y-4">
+                <div className="w-full h-fit flex flex-col justify-start items-start">
+                  <div className="w-full h-fit flex justify-start items-center">
+                    <h4 className="text-4xl">-</h4>
+                    <h4 className="text-4xl">1,200,000</h4>
+                    <h4 className="text-4xl"> T</h4>
+                  </div>
+                  <h6 className="text-lg font-normal text-[#64748B]">
+                    Your Income Amount
+                  </h6>
+                </div>
+                <div className="flex items-center justify-start gap-x-2">
+                  {/* <FaCircleArrowDown className="text-green-700" /> */}
+                  <div className="flex ">
+                    <h6 className="text-lg font-normal text-[#000000]">30</h6>
+                    <h6 className="text-lg font-normal text-[#000000]">
+                      % from last month
+                    </h6>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* useContext ашиглаж үзэх хэсэг END  */}
-          <div>
-            <div>
-              <div className="text-[gray] font-light">Amount</div>
-              <input
-                value={amount}
-                type="number"
-                placeholder="₮ 000.00"
-                className="col-span-4 p-8 mb-10 border rounded-lg"
-                onChange={(event) => {
-                  setAmount(event.target.value);
-                }}
-              />
-            </div>
-
-            <div>
-              <div className="text-[gray] font-light">Title</div>
-              <input
-                value={title}
-                type="text"
-                placeholder="₮ 000.00"
-                className="col-span-4 p-8 mb-5 border rounded-lg"
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
-              />
-            </div>
-            <Button
-              onClick={createAccount}
-              className="text-[#1F2937] hover:text-[#fff] bg-[#0166FF] font-bold  text-base rounded-full "
-            >
-              + Create
-            </Button>
-            {/* <button onClick={createAccount}>Create</button> */}
+          <div className="w-full h-[284px] flex gap-6 ">
+            <div className="w-1/2 h-full bg-yellow-200 rounded-xl"></div>
+            <div className="w-1/2 h-full bg-pink-200  rounded-xl"></div>
           </div>
-        </main>
+          <div className="w-full h-[456px] bg-blue-200  rounded-xl"></div>
+        </div>
+         
+      
       </Container>
     </>
   );

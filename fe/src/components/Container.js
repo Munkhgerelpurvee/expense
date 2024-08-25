@@ -1,7 +1,7 @@
-export const Container = ({ children }) => {
+export const Container = ({ background, children, height }) => {
   return (
-    <div className="w-screen bg-slate-400">
-      <div className="w-full h-full m-auto Lg:max-w-screen-xl">{children}</div>
+    <div className={`${background} w-screen ${height} `}>
+      <div className=" w-full h-full m-auto lg:max-w-[1200px] ">{children}</div>
     </div>
   );
 };

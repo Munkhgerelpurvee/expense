@@ -1,11 +1,15 @@
 const { Router } = require("express");
 const {
-  getCategories,
+  getAllCategories,
   createCategory,
+  deleteCategory
 } = require("../controllers/categoryDrizzleController");
 
 const categoryRouter = Router();
-categoryRouter.get("/", getCategories);
+categoryRouter.get("/", getAllCategories);
 categoryRouter.post("/", createCategory);
+categoryRouter.delete("/:id", deleteCategory);
+
+
 
 module.exports = { categoryRouter };

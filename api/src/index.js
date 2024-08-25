@@ -1,11 +1,9 @@
-const dotenv = require("dotenv");
-// dotenv.config();
-require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
-// const logger = require("./middleware/logger");
+const dotenv = require("dotenv");
+dotenv.config();
 
+// const logger = require("./middleware/logger");
 // Router оруулж ирэх
 // const { accountRouter } = require("./routes/account.route");
 // const { categoryRouter } = require("./routes/category.route");
@@ -16,9 +14,9 @@ const { authMiddleware } = require("./middleware/auth.middleware");
 // drizzle routes
 const { postsRouter } = require("./routes/posts.route");
 const { categoryRouter } = require("./routes/category.drizzle.route");
+const { recordRouter } = require("./routes/record.route");
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 app.use(authMiddleware);
@@ -39,6 +37,7 @@ app.use("/auth", authRouter);
 app.use("/posts", postsRouter);
 app.use("/users", userRouter);
 app.use("/categories", categoryRouter);
+app.use("/records", recordRouter);
 
 // expense.mn Rest Api Backend
 // const port = 3001;
@@ -46,7 +45,7 @@ app.use("/categories", categoryRouter);
 //   console.log(`Server is listening on port ${port}`);
 // });
 //
-// trackerTest.mn Rest API
+// trackerTest.mn Rest API  with DRIZZLE
 const port = 4000;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
