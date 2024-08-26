@@ -9,20 +9,20 @@ export const CategoryContext = createContext(null);
 export const CategoryContextProvider = ({ children }) => {
   // Ямар утга явуулахаа State-ээр зарлаж өгнө
   const [categories, setCategories] = useState([]);
-
+  const getData = async () => {
+    const response = await axios.get("http://localhost:3001/api/categories", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    setCategories(response.data);
+    // console.log("-CategoryContext-All Data here- Res.Data --", response.data);
+  };
   // // All Category авах
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const getData = async () => {
-      const response = await axios.get("http://localhost:3001/api/categories", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      });
-      setCategories(response.data);
-      // console.log("-CategoryContext-All Data here- Res.Data --", response.data);
-    };
+
     getData();
   }, []);
 
@@ -48,6 +48,7 @@ export const CategoryContextProvider = ({ children }) => {
       );
 
       setCategories([...categories, response.data]);
+      getData();
     } catch (error) {
       console.log(error);
     }

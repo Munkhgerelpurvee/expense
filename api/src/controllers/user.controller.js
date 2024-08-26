@@ -12,28 +12,4 @@ const getMe = async (req, res) => {
   }
 };
 
-//
-// const getUsers = async (req, res) => {
-//   const users = await db.query.users.findMany({
-//     with: {
-//       posts: true,
-//     },
-//   });
-
-//   res.json(users);
-// };
-
-// const createUser = async (req, res) => {
-//   const { username, email, password } = req.body;
-
-//   console.log(req.body, "JJJ");
-
-//   const user = await db
-//     .insert(users)
-//     .values({ username, email, password })
-//     .returning();
-
-//   res.json(user);
-// };
-
 module.exports = { getMe };

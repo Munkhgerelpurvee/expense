@@ -8,13 +8,14 @@ dotenv.config();
 // const { accountRouter } = require("./routes/account.route");
 // const { categoryRouter } = require("./routes/category.route");
 //
-const { authRouter } = require("./routes/auth.route");
+
 const { userRouter } = require("./routes/user.route");
 const { authMiddleware } = require("./middleware/auth.middleware");
 // drizzle routes
 const { postsRouter } = require("./routes/posts.route");
 const { categoryRouter } = require("./routes/category.drizzle.route");
 const { recordRouter } = require("./routes/record.route");
+const { authRouter } = require("./routes/auth.route");
 
 const app = express();
 app.use(cors());
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 // use  функцийг ашиглан төрөл бүрийн Express-н midlleware-ийг холбодог.
 // app.use(logger);
 app.use("/auth", authRouter);
+
 //
 // app.use("/users", userRouter);
 // app.use("/api/accounts", accountRouter);

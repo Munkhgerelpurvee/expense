@@ -20,6 +20,7 @@ const categories = pgTable("categories", {
   categoryName: varchar("categoryName", { length: 256 }),
   iconName: varchar("iconName", { length: 256 }),
   selectedColor: varchar("selectedColor", { length: 256 }),
+  userId: integer("userId"),
 });
 const records = pgTable("records", {
   id: serial("id").primaryKey(),

@@ -44,7 +44,7 @@ import { Textarea } from "@/components/ui/textarea";
 // import from component
 import AddCategory123 from "./AddCategory123";
 import { CategoryContext } from "@/components/CategoryContext";
-// import { AccountContext } from "./AccountContext";
+import { AccountContext } from "./AccountContext";
 
 export default function AddRecord({ text }) {
   const {
@@ -61,18 +61,18 @@ export default function AddRecord({ text }) {
   // console.log(categories);
 
   // AccountContext-g oiruulj irne
-  // const {
-  //   getAccounts,
-  //   createAccount,
-  //   accounts,
-  //   setAccounts,
-  //   amount,
-  //   setAmount,
-  //   categoryId,
-  //   setCategoryId,
-  //   newAccount,
-  //   setNewAccount,
-  // } = useContext(AccountContext);
+  const {
+    getAccounts,
+    createAccount,
+    accounts,
+    setAccounts,
+    amount,
+    setAmount,
+    categoryId,
+    setCategoryId,
+    newAccount,
+    setNewAccount,
+  } = useContext(AccountContext);
 
   //
   // const [categoryId, setCategoryId] = useState();

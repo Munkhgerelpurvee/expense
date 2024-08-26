@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar";
+import { Navbar } from "../../components/Navbar";
 import Categories from "../../components/Categories";
 import Food from "../../components/Food";
 import Image from "next/image";

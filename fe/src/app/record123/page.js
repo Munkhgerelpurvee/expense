@@ -27,7 +27,7 @@ import { Input } from "@/components/ui/input";
 // import from component
 import { Accounts } from "../../components/Accounts";
 import { IconCategory } from "@/components/Icon-category";
-import Navbar from "../../components/Navbar";
+import { Navbar } from "../../components/Navbar";
 import AddRecord from "@/components/AddRecord";
 import { CategoryContext } from "@/components/CategoryContext";
 

@@ -4,10 +4,8 @@ const { v4 } = require("uuid");
 const dotenv = require("dotenv");
 dotenv.config();
 // drizzle
-const {db} = require("../database/index");
-const {users} = require("../database/schema");
-
-
+const { db } = require("../database/index");
+const { users } = require("../database/schema");
 
 const login = async (req, res) => {
   console.log(process.env.JWT_SECRET, "env====");
@@ -15,15 +13,17 @@ const login = async (req, res) => {
   // const { email, password } = req.body;
   // const users = readJson("users.json");
   // drizzle
-  const {email, password} = req.body;
+  const { email, password } = req.body;
 
   // const user = users.find(
   //   (user) => user.email === email && user.password === password
   // );
   const users = await db.query.users.findMany({});
-  const user = users.find((user) => user.email === email && user.password === password);
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
 
- if (!user) return res.status(401).json({ message: "Invalid credentials" });
+  if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
   const token = jwt.sign(
     {
@@ -67,14 +67,39 @@ const login = async (req, res) => {
 // };
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   const user = await db
     .insert(users)
-    .values({ name, email, password })
+    .values({ username, email, password })
     .returning();
 
   res.json(user);
 };
 
-module.exports = { login, register };
+//
+//
+const getUsers = async (req, res) => {
+  const users = await db.query.users.findMany({
+    with: {
+      posts: true,
+    },
+  });
+
+  res.json(users);
+};
+//
+const createUser = async (req, res) => {
+  const { username, email, password } = req.body;
+
+  console.log(req.body, "JJJ");
+
+  const user = await db
+    .insert(users)
+    .values({ username, email, password })
+    .returning();
+
+  res.json(user);
+};
+
+module.exports = { login, register, getUsers, createUser };
