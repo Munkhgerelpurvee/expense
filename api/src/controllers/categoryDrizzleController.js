@@ -10,9 +10,25 @@ const { eq } = require("drizzle-orm");
 // CRUD:Get
 const getAllCategories = async (req, res) => {
   try {
-    const categoriesData = await db.query.categories.findMany();
+    const categoriesData = await db.query.categories.findMany({
+      where: eq(categories.userId, req.user.id),
+    });
 
     res.json(categoriesData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching categories" });
+  }
+};
+
+const getOneCategory = async (req, res) => {
+  const categoryId = req.params.id;
+  try {
+    const categoriesData = await db.query.categories.findMany();
+    const chooseCategory = await categoriesData.find(
+      (category) => category.id == categoryId
+    );
+    res.json(chooseCategory);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching categories" });
@@ -33,7 +49,7 @@ const getAllCategories = async (req, res) => {
 // CRUD:Post
 const createCategory = async (req, res) => {
   const { categoryName, iconName, selectedColor } = req.body;
-  // const {newCategory} = req.body
+
   try {
     const [newCategory] = await db
       .insert(categories)
@@ -66,4 +82,9 @@ const deleteCategory = async (req, res) => {
     res.status(500).json({ message: "Error deleting category" });
   }
 };
-module.exports = { createCategory, getAllCategories, deleteCategory };
+module.exports = {
+  createCategory,
+  getAllCategories,
+  deleteCategory,
+  getOneCategory,
+};

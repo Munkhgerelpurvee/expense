@@ -9,19 +9,19 @@ export const CategoryContext = createContext(null);
 export const CategoryContextProvider = ({ children }) => {
   // Ямар утга явуулахаа State-ээр зарлаж өгнө
   const [categories, setCategories] = useState([]);
-  const getData = async () => {
-    const response = await axios.get("http://localhost:3001/api/categories", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    });
-    setCategories(response.data);
-    // console.log("-CategoryContext-All Data here- Res.Data --", response.data);
-  };
+
   // // All Category авах
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const getData = async () => {
+      const response = await axios.get("http://localhost:4000/categories", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setCategories(response.data);
+      console.log("-CategoryContext-All Data here- Res.Data --", response.data);
+    };
 
     getData();
   }, []);
@@ -43,8 +43,14 @@ export const CategoryContextProvider = ({ children }) => {
       console.log("-CategoryContext- Res.Data --", newCategory);
 
       const response = await axios.post(
-        "http://localhost:3001/api/categories",
-        newCategory
+        "http://localhost:4000/categories",
+        newCategory,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
 
       setCategories([...categories, response.data]);
@@ -52,6 +58,42 @@ export const CategoryContextProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+  // DELETE Category  үүсгэх
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState([]);
+
+  const deleteCategory = async () => {
+    if (selectedCategoryIds.length > 0) {
+      await Promise.all([
+        selectedCategoryIds.map((id) =>
+          axios.delete(`http://localhost:4000/categories/${id}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
+        ),
+      ]);
+
+      setCategories(
+        categories.filter(
+          (category) => !selectedCategoryIds.includes(category.id)
+        )
+      );
+      setSelectedCategoryIds([]);
+    }
+  };
+
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategoryIds((prevSelectedIds) => {
+      // Check if the categoryId is already in the selected array
+      if (prevSelectedIds.includes(categoryId)) {
+        // If it is, remove it from the array (deselect it)
+        return prevSelectedIds.filter((id) => id !== categoryId);
+      } else {
+        // Otherwise, add it to the array (select it)
+        return [...prevSelectedIds, categoryId];
+      }
+    });
   };
 
   return (
@@ -68,6 +110,11 @@ export const CategoryContextProvider = ({ children }) => {
 
         selectedColor,
         setSelectedColor,
+
+        deleteCategory,
+        selectedCategoryIds,
+        setSelectedCategoryIds,
+        handleCategoryClick,
       }}
     >
       {children}

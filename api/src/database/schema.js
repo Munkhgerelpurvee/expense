@@ -3,40 +3,37 @@ const { integer, pgTable, serial, varchar } = require("drizzle-orm/pg-core");
 
 const users = pgTable("users", {
   id: serial("id").primaryKey(),
-  username: varchar("username", { length: 256 }),
-  email: varchar("email", { length: 256 }),
-  password: varchar("password", { length: 256 }),
+  username: varchar("username", { length: 100 }),
+  email: varchar("email", { length: 50 }),
+  password: varchar("password", { length: 50 }),
 });
 
 const posts = pgTable("posts", {
   id: serial("id").primaryKey(),
-  title: varchar("title", { length: 256 }),
+  title: varchar("title", { length: 50 }),
   content: varchar("content", { length: 256 }),
   userId: integer("userId"),
 });
 
 const categories = pgTable("categories", {
   id: serial("id").primaryKey(),
-  categoryName: varchar("categoryName", { length: 256 }),
+  categoryName: varchar("categoryName", { length: 50 }),
   iconName: varchar("iconName", { length: 256 }),
-  selectedColor: varchar("selectedColor", { length: 256 }),
+  selectedColor: varchar("selectedColor", { length: 50 }),
   userId: integer("userId"),
 });
-const records = pgTable("records", {
+
+const accounts = pgTable("accounts", {
   id: serial("id").primaryKey(),
   userId: integer("userId"),
   categoryId: integer("categoryId"),
   amount: integer("amount"),
   date: varchar("date"),
   time: varchar("time"),
-  transaction_type: varchar("transaction_type", { length: 256 }),
+  transaction_type: varchar("transaction_type", { length: 50 }),
   payee: varchar("payee", { length: 256 }),
   note: varchar("note", { length: 256 }),
 });
-
-const usersRelations = relations(users, ({ many }) => ({
-  posts: many(posts),
-}));
 
 const postsRelations = relations(posts, ({ one }) => ({
   user: one(users, {
@@ -45,23 +42,33 @@ const postsRelations = relations(posts, ({ one }) => ({
   }),
 }));
 
-const recordsRelations = relations(records, ({ one }) => ({
+const accountsRelations = relations(accounts, ({ one }) => ({
   user: one(users, {
-    fields: [records.userId],
+    fields: [accounts.userId],
     references: [users.id],
   }),
   category: one(categories, {
-    fields: [records.categoryId],
+    fields: [accounts.categoryId],
     references: [categories.id],
   }),
+}));
+
+const usersRelations = relations(users, ({ many }) => ({
+  accounts: many(accounts),
+  posts: many(posts),
+}));
+
+const categoriesRelations = relations(categories, ({ many }) => ({
+  accounts: many(accounts),
 }));
 
 module.exports = {
   users,
   posts,
   categories,
-  usersRelations,
+  accounts,
   postsRelations,
-  records,
-  recordsRelations,
+  accountsRelations,
+  usersRelations,
+  categoriesRelations,
 };

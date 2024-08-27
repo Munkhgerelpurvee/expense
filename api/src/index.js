@@ -14,7 +14,8 @@ const { authMiddleware } = require("./middleware/auth.middleware");
 // drizzle routes
 const { postsRouter } = require("./routes/posts.route");
 const { categoryRouter } = require("./routes/category.drizzle.route");
-const { recordRouter } = require("./routes/record.route");
+
+const { accountRouter } = require("./routes/account.drizzle.route");
 const { authRouter } = require("./routes/auth.route");
 
 const app = express();
@@ -39,7 +40,7 @@ app.use("/auth", authRouter);
 app.use("/posts", postsRouter);
 app.use("/users", userRouter);
 app.use("/categories", categoryRouter);
-app.use("/records", recordRouter);
+app.use("/accounts", accountRouter);
 
 // expense.mn Rest Api Backend
 // const port = 3001;

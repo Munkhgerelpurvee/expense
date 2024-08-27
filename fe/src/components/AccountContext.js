@@ -12,18 +12,24 @@ export const AccountContextProvider = ({ children }) => {
   const [amount, setAmount] = useState();
   const [categoryId, setCategoryId] = useState("");
   const [newAccount, setNewAccount] = useState({
-    type: "EXP",
+    categoryId,
+    amount,
     date: "",
     time: "",
+    transaction_type: "EXP",
     payee: "",
     note: "",
   });
 
   // All Account авах
   const getAccounts = async () => {
-    const response = await axios.get("http://localhost:3001/api/accounts");
+    const response = await axios.get("http://localhost:4000/accounts", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     setAccounts(response.data);
-    // console.log("-AccountContext-All Data here- Res.Data --", response.data);
+    console.log("-AccountContext-All Data here- Res.Data --", response.data);
   };
   useEffect(() => {
     getAccounts();
@@ -32,16 +38,22 @@ export const AccountContextProvider = ({ children }) => {
   // newAccout үүсгэх
   const createAccount = async () => {
     const newAccount = {
-      amount,
       categoryId,
-      record_id: v4(),
+      amount,
+
+      // record_id: v4(),
     };
     // newAccout орж ирж байгаа эсэхийг байнга log хийж шалгах
     console.log("---- newAccount---", newAccount);
     // new account үүсгэх
     const response = await axios.post(
-      "http://localhost:3001/api/accounts",
-      newAccount
+      "http://localhost:4000/accounts",
+      newAccount,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
 
     setAccounts([...accounts, response.data]);

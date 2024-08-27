@@ -1,5 +1,5 @@
 {
-  "id": "5a82e435-c2b5-44b7-80a4-335b45535834",
+  "id": "ff8c7cd2-b22e-48f1-b732-c3808921762f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -16,19 +16,19 @@
         },
         "username": {
           "name": "username",
-          "type": "varchar(256)",
+          "type": "varchar(100)",
           "primaryKey": false,
           "notNull": false
         },
         "email": {
           "name": "email",
-          "type": "varchar(256)",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": false
         },
         "password": {
           "name": "password",
-          "type": "varchar(256)",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": false
         }
@@ -50,7 +50,7 @@
         },
         "title": {
           "name": "title",
-          "type": "varchar(256)",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": false
         },
@@ -84,7 +84,7 @@
         },
         "categoryName": {
           "name": "categoryName",
-          "type": "varchar(256)",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": false
         },
@@ -96,7 +96,7 @@
         },
         "selectedColor": {
           "name": "selectedColor",
-          "type": "varchar(256)",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": false
         },
@@ -112,8 +112,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.records": {
-      "name": "records",
+    "public.accounts": {
+      "name": "accounts",
       "schema": "",
       "columns": {
         "id": {
@@ -154,7 +154,7 @@
         },
         "transaction_type": {
           "name": "transaction_type",
-          "type": "varchar(256)",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": false
         },

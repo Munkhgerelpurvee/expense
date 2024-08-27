@@ -171,6 +171,32 @@ export default function Record123({}) {
                 );
               })}
             </div>
+            {/* here */}
+            <div className="mt-6 space-y-4">
+              <p className="font-semibold">Amount Range</p>
+              <div className="flex *:h-12 gap-4">
+                <Input
+                  onChange={(e) => setValue({ ...value, min: e.target.value })}
+                />
+                <Input
+                  onChange={(e) => setValue({ ...value, max: e.target.value })}
+                />
+              </div>
+              <div className="h-12 space-y-2">
+                <Slider
+                  onValueChange={(v) => console.log(v)}
+                  defaultValue={[value.selectedValue]}
+                  min={value.min}
+                  max={value.max}
+                  step={100}
+                />
+                <div className="flex justify-between">
+                  ß<p>{value.min}</p>
+                  <p>{value.max}</p>
+                </div>
+              </div>
+            </div>
+
             <div className="flex px-4 mt-2 ">
               {/*  */}
               <Dialog>
@@ -207,35 +233,6 @@ export default function Record123({}) {
                     >
                       Save changes TO SIDEBAR
                     </Button>
-
-                    <div className="space-y-4">
-                      <p className="font-semibold">Amount Range</p>
-                      <div className="flex *:h-12 gap-4">
-                        <Input
-                          onChange={(e) =>
-                            setValue({ ...value, min: e.target.value })
-                          }
-                        />
-                        <Input
-                          onChange={(e) =>
-                            setValue({ ...value, max: e.target.value })
-                          }
-                        />
-                      </div>
-                      <div className="h-12 space-y-2">
-                        <Slider
-                          onValueChange={(v) => console.log(v)}
-                          defaultValue={[value.selectedValue]}
-                          min={value.min}
-                          max={value.max}
-                          step={100}
-                        />
-                        <div className="flex justify-between">
-                          <p>{value.min}</p>
-                          <p>{value.max}</p>
-                        </div>
-                      </div>
-                    </div>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>

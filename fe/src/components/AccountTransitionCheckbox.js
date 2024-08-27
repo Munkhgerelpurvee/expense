@@ -13,7 +13,12 @@ export const AccountTransitionCheckbox = ({ accountTrans }) => {
   // `http://localhost:3001/api/categories/${accountTrans.categoryId}`
   const getCategory = async () => {
     const response = await axios.get(
-      `http://localhost:3001/api/categories/${accountTrans.categoryId}`
+      `http://localhost:4000/categories/${accountTrans.categoryId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     console.log(response.data, "--getCategoryById res.data--");
 
