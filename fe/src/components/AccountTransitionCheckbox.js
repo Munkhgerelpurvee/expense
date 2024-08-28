@@ -8,6 +8,7 @@ import axios from "axios";
 
 //
 export const AccountTransitionCheckbox = ({ accountTrans }) => {
+  const formattedAmount = new Intl.NumberFormat().format(accountTrans.amount);
   console.log(accountTrans, "==accountTrans==");
   const [categoryData, setCategoryData] = useState({});
   // `http://localhost:3001/api/categories/${accountTrans.categoryId}`
@@ -39,13 +40,30 @@ export const AccountTransitionCheckbox = ({ accountTrans }) => {
         >
           {IconComponent && <IconComponent color="white" size={20} />}
         </div>
-        <Label className="text-[gray] font-light" htmlFor="r1">
-          {categoryData.categoryName}
-        </Label>
+        <div>
+          <Label className="text-[#130404] font-light" htmlFor="r1">
+            {categoryData.categoryName}
+          </Label>
+          <p className="text-xs">
+            {accountTrans.date} {accountTrans.time}
+          </p>
+        </div>
       </div>
       <div className="flex items-center">
-        <p className="text-[red] text-[10px] ">{accountTrans.amount}</p>
+        <p className="text-[#EAB308] text-[10px] font-semibold  ">
+          {accountTrans.amount}
+        </p>
       </div>
+
+      {/* <p
+        style={{
+          color: accountTrans.transaction_type === "INC" ? "green" : "red",
+        }}
+        className={`font-semibold `}
+      >
+        {accountTrans.transaction_type === "EXP" ? "-" : null} {formattedAmount}
+        ₮
+      </p> */}
     </main>
   );
 };

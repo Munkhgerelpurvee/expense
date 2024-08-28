@@ -24,16 +24,18 @@ const getAllAccounts = async (req, res) => {
 
 const createAccount = async (req, res) => {
   // const { newAccount } = req.body;
+
   const {
-    amount,
-    categoryId,
     userId,
+    categoryId,
+    amount,
     payee,
     note,
     date,
     time,
     transaction_type,
   } = req.body;
+
   // const {
   //   userId,
   //   categoryId,
@@ -44,7 +46,7 @@ const createAccount = async (req, res) => {
   //   payee,
   //   note,
   // } = newAccount;
-  console.log(categoryId);
+  console.log(categoryId, "accDrizController======categoryId");
 
   try {
     const [newAccount] = await db
@@ -52,8 +54,8 @@ const createAccount = async (req, res) => {
       .values({
         userId: req.user.id,
         categoryId,
-        date,
         amount,
+        date,
         time,
         transaction_type,
         payee,

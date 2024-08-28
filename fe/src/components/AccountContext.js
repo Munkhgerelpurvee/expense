@@ -37,12 +37,12 @@ export const AccountContextProvider = ({ children }) => {
 
   // newAccout үүсгэх
   const createAccount = async () => {
-    const newAccount = {
-      categoryId,
-      amount,
+    // const newAccount = {
+    //   categoryId,
+    //   amount,
 
-      // record_id: v4(),
-    };
+    //   // record_id: v4(),
+    // };
     // newAccout орж ирж байгаа эсэхийг байнга log хийж шалгах
     console.log("---- newAccount---", newAccount);
     // new account үүсгэх

@@ -93,17 +93,23 @@ export default function AddRecord({ text }) {
           <div className="flex gap-4 py-4">
             <div className="flex flex-1 flex-col border border-solid rounded-lg border-[yellow] p-4">
               <div className="flex gap-6">
-                <Tabs defaultValue="account" className="w-[400px]">
+                <Tabs
+                  defaultValue="account"
+                  onValueChange={(value) =>
+                    setNewAccount({ ...newAccount, transaction_type: value })
+                  }
+                  className="w-[400px]"
+                >
                   <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger
                       className="bg-[#0166FF] rounded-full "
-                      value="account"
+                      value="EXP"
                     >
                       Expense
                     </TabsTrigger>
                     <TabsTrigger
                       className="rounded-full bg-[#E5E7EB] text-[#1F2937] hover:text-[#fff]"
-                      value="password"
+                      value="INC"
                     >
                       Income
                     </TabsTrigger>
@@ -120,14 +126,19 @@ export default function AddRecord({ text }) {
                   placeholder="₮ 000.00"
                   className="col-span-4 p-2 border rounded-lg"
                   onChange={(event) => {
-                    setAmount(event.target.value);
+                    setNewAccount({
+                      ...newAccount,
+                      amount: event.target.value,
+                    });
                   }}
                 />
               </div>
               <div className="grid items-center grid-cols-1 gap-4">
                 <div className="mt-3">
                   <Select
-                    onValueChange={(value) => setCategoryId(value)}
+                    onValueChange={(value) =>
+                      setNewAccount({ ...newAccount, categoryId: value })
+                    }
                     className=""
                   >
                     <Label className="text-[gray] font-light " htmlFor="r1">
@@ -195,10 +206,13 @@ export default function AddRecord({ text }) {
                     Payee
                   </Label>
                   <Input
-                    value=""
+                    id="message"
                     type="text"
                     placeholder="Write here"
                     className="col-span-4 p-8 border rounded-lg"
+                    onChange={(e) =>
+                      setNewAccount({ ...newAccount, payee: e.target.value })
+                    }
                   />
                 </div>
                 <div className="items-center gap-4 ">
@@ -210,6 +224,9 @@ export default function AddRecord({ text }) {
                       className="p-24"
                       placeholder="Write here."
                       id="message"
+                      onChange={(e) =>
+                        setNewAccount({ ...newAccount, note: e.target.value })
+                      }
                     />
                   </div>
                 </div>

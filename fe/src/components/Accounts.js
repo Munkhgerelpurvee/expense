@@ -3,11 +3,35 @@ import { useContext } from "react";
 import { Checkbox } from "./ui/checkbox";
 import { Label } from "./ui/label";
 import { AccountTransitionCheckbox } from "./AccountTransitionCheckbox";
+import { AccountContext } from "@/components/AccountContext";
 
 //
-import { AccountContext } from "@/components/AccountContext";
 export const Accounts = () => {
   const { accounts } = useContext(AccountContext);
+  //
+  const calculateBalance = (accounts) => {
+    let totalIncome = 0;
+    let totalExpenses = 0;
+
+    accounts.forEach((account) => {
+      console.log(account.amount);
+
+      if (account.transaction_type === "INC") {
+        totalIncome += account.amount;
+      } else if (account.transaction_type === "EXP") {
+        totalExpenses += account.amount;
+      }
+    });
+
+    const balance = totalIncome - totalExpenses;
+
+    return balance;
+  };
+
+  const formattedAmount = new Intl.NumberFormat().format(
+    calculateBalance(accounts)
+  );
+
   return (
     <>
       <main></main>
@@ -20,6 +44,9 @@ export const Accounts = () => {
               <Label className="text-[gray] font-light" htmlFor="r1">
                 Select all
               </Label>
+              <p style={{ color: "green" }} className="font-semibold">
+                {formattedAmount}₮
+              </p>
             </div>
           </div>
           <h1 className="mb-4 text-[#1F2937] text-base font-semibold">Today</h1>

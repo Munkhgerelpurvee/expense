@@ -79,6 +79,7 @@ const register = async (req, res) => {
 
 //
 //
+
 const getUsers = async (req, res) => {
   const users = await db.query.users.findMany({
     with: {
