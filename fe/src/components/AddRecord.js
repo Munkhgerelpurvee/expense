@@ -86,12 +86,14 @@ export default function AddRecord({ text }) {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[925px]">
+          {/* 200ok */}
           <DialogHeader className="shadow-md">
             <DialogTitle>Add Record</DialogTitle>
           </DialogHeader>
 
           <div className="flex gap-4 py-4">
             <div className="flex flex-1 flex-col border border-solid rounded-lg border-[yellow] p-4">
+              {/* 200ok */}
               <div className="flex gap-6">
                 <Tabs
                   defaultValue="account"
@@ -116,6 +118,7 @@ export default function AddRecord({ text }) {
                   </TabsList>
                 </Tabs>
               </div>
+              {/* 200ok */}
               <div className="grid items-center grid-cols-1 gap-4 mt-4">
                 <Label className="text-[gray] font-light" htmlFor="r1">
                   Amount
@@ -133,6 +136,7 @@ export default function AddRecord({ text }) {
                   }}
                 />
               </div>
+              {/* 139-200  got some mistake  */}
               <div className="grid items-center grid-cols-1 gap-4">
                 <div className="mt-3">
                   <Select
@@ -154,11 +158,8 @@ export default function AddRecord({ text }) {
                             <AddCategory123 />
                           </button>
                         </SelectLabel>
-
-                        {/*  Mapping Categories */}
+                        {/* 
                         <div className="flex">
-                          {/* Энд сонгогдсон icon-ийг гаргаж ирэх */}
-
                           <div className="items-center gap-4 px-4">
                             {categories.map((item, index) => {
                               const Icon = Icons[item.iconName];
@@ -182,12 +183,12 @@ export default function AddRecord({ text }) {
                               );
                             })}
                           </div>
-                        </div>
+                        </div> */}
                       </SelectGroup>
                     </SelectContent>
                   </Select>
-
-                  <DialogFooter className="">
+                  {/* AccountContext 49 deer mistake */}
+                  {/* <DialogFooter className="">
                     <Button
                       onClick={createAccount}
                       className="bg-[#0166FF] w-full rounded-full mt-10"
@@ -195,10 +196,11 @@ export default function AddRecord({ text }) {
                     >
                       Add Record to category
                     </Button>
-                  </DialogFooter>
+                  </DialogFooter> */}
                 </div>
               </div>
             </div>
+            {/* 200ok */}
             <div className="flex flex-1 border border-solid rounded-lg border-[gray] p-4">
               <div className="flex flex-col m-auto">
                 <div className="items-center gap-4 mt-4">
