@@ -35,6 +35,7 @@ const createAccount = async (req, res) => {
     time,
     transaction_type,
   } = req.body;
+  console.log(req.body);
 
   // const {
   //   userId,

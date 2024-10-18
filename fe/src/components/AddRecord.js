@@ -129,6 +129,8 @@ export default function AddRecord({ text }) {
                   placeholder="₮ 000.00"
                   className="col-span-4 p-2 border rounded-lg"
                   onChange={(event) => {
+                    console.log(typeof event.target.value);
+
                     setNewAccount({
                       ...newAccount,
                       amount: event.target.value,
@@ -158,7 +160,7 @@ export default function AddRecord({ text }) {
                             <AddCategory123 />
                           </button>
                         </SelectLabel>
-                        {/* 
+
                         <div className="flex">
                           <div className="items-center gap-4 px-4">
                             {categories.map((item, index) => {
@@ -170,10 +172,7 @@ export default function AddRecord({ text }) {
                                 <SelectItem key={index} value={item.id}>
                                   <div className="flex gap-4">
                                     <div className="">
-                                      <Icon
-                                        style={{ color: item.selectedColor }}
-                                        // className="w-3 h-3"
-                                      />
+                                      <Icon color={item.selectedColor} />
                                     </div>
                                     <p className="text-[#1F2937] text-center font-light text-base px-4">
                                       {item.categoryName}
@@ -183,12 +182,12 @@ export default function AddRecord({ text }) {
                               );
                             })}
                           </div>
-                        </div> */}
+                        </div>
                       </SelectGroup>
                     </SelectContent>
                   </Select>
                   {/* AccountContext 49 deer mistake */}
-                  {/* <DialogFooter className="">
+                  <DialogFooter className="">
                     <Button
                       onClick={createAccount}
                       className="bg-[#0166FF] w-full rounded-full mt-10"
@@ -196,7 +195,7 @@ export default function AddRecord({ text }) {
                     >
                       Add Record to category
                     </Button>
-                  </DialogFooter> */}
+                  </DialogFooter>
                 </div>
               </div>
             </div>

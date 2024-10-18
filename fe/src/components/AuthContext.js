@@ -10,12 +10,12 @@ export const AuthContext = createContext();
 
 // AuthContext- iig Provider hiih component hiine
 export const AuthContextProvider = ({ children }) => {
-    const router = useRouter();
-    const pathname = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [user, setUser] = useState(null);
   const [isReady, setIsReady] = useState(false);
-//login 
+  //login
   const login = async (email, password) => {
     try {
       const res = await api.post("/auth/Log-in", { email, password });
@@ -90,8 +90,6 @@ export const AuthContextProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
- 
- 
 };
 
 export const useAuth = () => useContext(AuthContext);

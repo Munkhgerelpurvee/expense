@@ -14,18 +14,18 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <AuthContextProvider>
-        <AccountContextProvider>
-          <CategoryContextProvider>
-            <UserContextProvider>
-              <body className={inter.className}>
+      <body className={inter.className}>
+        <AuthContextProvider>
+          <AccountContextProvider>
+            <CategoryContextProvider>
+              <UserContextProvider>
                 {children}
                 <ToastContainer />
-              </body>
-            </UserContextProvider>
-          </CategoryContextProvider>
-        </AccountContextProvider>
-      </AuthContextProvider>
+              </UserContextProvider>
+            </CategoryContextProvider>
+          </AccountContextProvider>
+        </AuthContextProvider>
+      </body>
     </html>
   );
 }

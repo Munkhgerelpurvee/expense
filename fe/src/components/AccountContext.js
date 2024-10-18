@@ -12,8 +12,8 @@ export const AccountContextProvider = ({ children }) => {
   const [amount, setAmount] = useState();
   const [categoryId, setCategoryId] = useState("");
   const [newAccount, setNewAccount] = useState({
-    categoryId,
-    amount,
+    categoryId: 0,
+    amount: 0,
     date: "",
     time: "",
     transaction_type: "EXP",
